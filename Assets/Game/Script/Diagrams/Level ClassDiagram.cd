@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="BOLA">
+    <Position X="8.719" Y="1.479" Height="0.332" Width="1.7" />
+  </Comment>
+  <Comment CommentText="LEVEL">
+    <Position X="4.92" Y="1.259" Height="0.332" Width="1.422" />
+  </Comment>
+  <Class Name="Field.FieldSide" Collapsed="true">
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAMEAAAAAAAAFA=</HashCode>
+      <FileName>Assets\Game\Script\Game\FieldSide.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="team" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PriorityControl" Collapsed="true">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\Area\PriorityControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="recipient" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Team.TeamSelection" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAACAAABIAAIAAAAAAAAARAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="team" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Ball.Bounce" Collapsed="true">
+    <Position X="8.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAAAgAACAABAAAAAAAAAAAAAAAAABIAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\Ball\Bounce.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ball.Prediction" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAABAIAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\Ball\Bounce.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Team.TEAM" Collapsed="true">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

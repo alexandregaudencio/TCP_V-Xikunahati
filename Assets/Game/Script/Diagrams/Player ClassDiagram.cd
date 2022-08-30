@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Character.StateMachine.PlayerStateMachine" Collapsed="true">
+    <Position X="4.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAiAAAAAAIAAAAAAAAAAAAAAIAAAAAAIAQEA=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\PlayerStateMachine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="characterController" />
+      <Property Name="StateInstances" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Character.CharacterBehaviour" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQEAAAAAAAAQIAAAAAAAAAAUAQBAAAEAgABAAEAJEE=</HashCode>
+      <FileName>Assets\Game\Script\Character\CharacterBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="characterProperties" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Character.CharacterProperties" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAAAIAAAACAAAAAAAAABAAAAAQAAAABAAAASQAA=</HashCode>
+      <FileName>Assets\Game\Script\Character\CharacterProperties.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.StateMachine.State" Collapsed="true">
+    <Position X="2" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAIABAAAAAg=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.StateMachine.StateInstances" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <AssociationLine Name="idleState" Type="Character.StateMachine.IdleState" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.938" Y="3.062" />
+        <Point X="4.938" Y="3.938" />
+        <Point X="4.5" Y="3.938" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="movingState" Type="Character.StateMachine.MovingState" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.312" Y="3.062" />
+        <Point X="5.312" Y="4.596" />
+        <Point X="4.5" Y="4.596" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="jumpState" Type="Character.StateMachine.JumpState" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.625" Y="3.062" />
+        <Point X="5.625" Y="5.346" />
+        <Point X="4.5" Y="5.346" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="diveState" Type="Character.StateMachine.DiveState" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="3.062" />
+        <Point X="6" Y="6.096" />
+        <Point X="4.5" Y="6.096" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAIAEAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\StateInstances.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="idleState" />
+      <Field Name="movingState" />
+      <Field Name="jumpState" />
+      <Field Name="diveState" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Character.StateMachine.DiveState" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="Character.StateMachine.State" FixedToPoint="true">
+      <Path>
+        <Point X="2.75" Y="7" />
+        <Point X="2.75" Y="6.062" />
+        <Point X="3" Y="6.062" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAIABAAAAAg=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\States\DiveState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.StateMachine.IdleState" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAIABAAAAAg=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\States\IdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.StateMachine.JumpState" Collapsed="true">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAIABAAAAAg=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\States\JumpState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.StateMachine.MovingState" Collapsed="true">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAAIABAAAAAg=</HashCode>
+      <FileName>Assets\Game\Script\Character\StateMchine\States\MovingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.Control.AIControl" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAIAAgAAAIQAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Control\AIControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.Control.CharacterControl" Collapsed="true">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <AssociationLine Name="behaviour" Type="Character.CharacterBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="8.562" Y="1.691" />
+        <Point X="8.562" Y="1.949" />
+        <Point X="7.5" Y="1.949" />
+        <Point X="7.5" Y="2.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAEAAEABAAAAAAAQAAAAAAAAAAABQAAAAQAAEA=</HashCode>
+      <FileName>Assets\Game\Script\Control\CharacterControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="control" />
+      <Field Name="behaviour" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Character.Control.Control" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAIAAgAAAIQAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Control\Control.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character.Control.PlayerInput" Collapsed="true">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAIAAgAAAIQAAAAAAAAAAAAAAAAABAAAQAAAAAEA=</HashCode>
+      <FileName>Assets\Game\Script\Control\PlayerInput.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="player" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Team.TeamSelection" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAACAAABIAAIAAAAAAAAARAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="team" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UnityEngine.ScriptableObject" Collapsed="true">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="head.HeaderControl" Collapsed="true">
+    <Position X="14.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAQAACAABAAAAAEACAAACIABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Character\HeaderControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="header" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CharacterAnimation" Collapsed="true">
+    <Position X="12" Y="1" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAIAABAAIAAAIgAAAAAAAAAAAAQAAgAAQAAAAEAIEA=</HashCode>
+      <FileName>Assets\CharacterAnimation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="team" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="Team.TEAM" Collapsed="true">
+    <Position X="12.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="head.HEAD_ROTATION" Collapsed="true">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Character\HeaderControl.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Character.Control.Players">
+    <Position X="10.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Control\PlayerInput.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

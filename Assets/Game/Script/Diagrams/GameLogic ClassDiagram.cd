@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game.Timer" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAIAIEBAQAAAAAAAAgAAAAAAACIAgAAoIAQCAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\Timer\Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.TimerManager" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAQAAAEA=</HashCode>
+      <FileName>Assets\Game\Script\Game\Timer\TimerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Field.FieldSide" Collapsed="true">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAMEAAAAAAAAFA=</HashCode>
+      <FileName>Assets\Game\Script\Game\FieldSide.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameplayRules" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\GameplayRules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game.ScoreBoard" Collapsed="true">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <AssociationLine Name="team" Type="Team.TEAM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.312" Y="4.941" />
+        <Point X="3.312" Y="5.316" />
+        <Point X="3" Y="5.316" />
+        <Point X="3" Y="5.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="teamScore" Type="Team.Score">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.555" Y="-0.005" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="fieldSide" Type="Field.FieldSide" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.812" Y="4.941" />
+        <Point X="3.812" Y="5.2" />
+        <Point X="4.875" Y="5.2" />
+        <Point X="4.875" Y="5.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAgAAAAAAAAAAAgQAQBIAAAAAIAACEA=</HashCode>
+      <FileName>Assets\Game\Script\UI\ScoreBoard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="team" />
+      <Field Name="teamScore" />
+      <Field Name="fieldSide" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Team.Score" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgAAAAAAAAAAAAAAAAAQAAAAAAAAEACAA=</HashCode>
+      <FileName>Assets\Game\Script\level\team\Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.ScriptableObject" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="Team.TEAM" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

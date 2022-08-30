@@ -1,0 +1,36 @@
+email:ifrj.tcp.v.2022.1@gmail.com
+senha:tcp_v_2022.1
+A partir desse ponto todos os arquivos de de imagem, áudio, e binários serão armazenados e sincronizados 
+a partir de uma nuvem.
+Tente manter as pastas em inglês, caracteres especiais devem ser evitados.
+Mantenha os arquivos devidamente organizados em uma estrutura hierarquica. 
+Exemplo de árvore de pastas:
+Art
+  \_Character
+	    \_(NOME DO INDIGINA 1)
+            			  \_Animation
+	    			  \_Texture
+	    			  \_Sounds
+
+	    \_(NOME DO INDIGINA 2)
+            			  \_Animation
+	    			  \_Texture
+	    			  \_Sounds
+  \_Environmnet
+	       \_Skybox
+		       \_Texture
+		       \_Data
+		       \_Sounds
+	       \_Level
+		      \_texture
+		      \_Data
+		.
+		.
+		.
+Sempre que um novo elemento for adicionado ele deve está dentro de uma hierarquia de pastas.
+Use as pastas em hierarquia para descrições (somente se for muito necessário), exemplo:
+Detro da pasta Character pode conter um aruivo de descrião:
+Character.txt
+	Numero de personagens diferente = 6
+	diferenças entre os personagens = cor da roupa
+Não se preocupe com arquivos de .meta, nessa estrutura pois representão apenas link de reconhecimento da unity

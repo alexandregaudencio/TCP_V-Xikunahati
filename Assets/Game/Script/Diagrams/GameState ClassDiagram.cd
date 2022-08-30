@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Game.CoreLoopController" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAACAAAAAAAAIAAAAAAAACAIAAAACAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\CoreLoop\CoreLoopController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="coreLoopHandlers" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Game.CoreLoopHandler" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAEAAAAAAEIAAAAAAEAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\CoreLoop\CoreLoopHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="state" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Game.GameStateController" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAACAAAAAAIAAAAAAAAAAAAAAACACAAAAAQAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\GameStateController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="stateHandlers" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Game.StateHandler" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <AssociationLine Name="state" Type="Game.GameState" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="2.688" />
+        <Point X="3.25" Y="2.688" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAEAAAAAAEIAAAAAAEAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\StateHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="state" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Game.ViewHandler" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\ViewHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Game.CoreLoopState">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\CoreLoop\CoreLoopHandler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Game.GameState">
+    <Position X="1.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAgAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Game\StateHandler.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
