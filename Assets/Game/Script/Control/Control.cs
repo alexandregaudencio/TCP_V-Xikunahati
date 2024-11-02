@@ -17,6 +17,11 @@ namespace Character.Control
 
         public abstract bool R();
         public abstract bool L();
+
+        public bool IsInputAction()
+        {
+            return head() && dive() && jump();
+        }
     }
 }
 

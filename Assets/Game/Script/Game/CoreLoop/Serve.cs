@@ -1,9 +1,4 @@
 using Ball;
-using Character.Control;
-using Character.StateMachine;
-using System.Collections;
-using System.Collections.Generic;
-using Team;
 using UnityEngine;
 
 namespace CoreLoop
@@ -25,12 +20,12 @@ namespace CoreLoop
 
         private void OnEnable()
         {
-            ballController.HeadOn += OnBallServed;
+            ballController.HeadedBall += OnBallServed;
         }
 
         private void OnDisable()
         {
-            ballController.HeadOn -= OnBallServed;
+            ballController.HeadedBall -= OnBallServed;
 
         }
 
@@ -43,11 +38,11 @@ namespace CoreLoop
         }
 
 
-        private void OnBallServed()
+        private void OnBallServed(ThrowBallData _)
         {
             coreLoopController.TransitionToState(CoreLoopState.ROLLING_BALL);
 
-          
+
         }
 
     }

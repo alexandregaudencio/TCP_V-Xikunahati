@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Team
 {
-    [CreateAssetMenu(fileName ="game Score")]
+    [CreateAssetMenu(fileName = "game Score")]
     public class Score : ScriptableObject
     {
         [SerializeField] private int teamScore = 0;

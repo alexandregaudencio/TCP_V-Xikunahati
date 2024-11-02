@@ -1,6 +1,4 @@
-using Character.Control;
-using System.Collections;
-using System.Collections.Generic;
+using Team;
 using UnityEngine;
 
 namespace Character.Control
@@ -16,9 +14,14 @@ namespace Character.Control
         private PlayerInput redCurrentInput;
         private PlayerInput blueCurrentInput;
 
+        public static PlayerControlHandler Instance;
+
+        private bool inputEnabled;
+
+
         private void Start()
         {
-
+            Instance = this;
             //for(int i = 0; i < blueOrderedCharacterControl.Length; i++) {
 
             //    redInputs[i] = redOrderedCharacterControl[i].GetComponent<PlayerInput>();
@@ -26,8 +29,26 @@ namespace Character.Control
             //}
             blueCurrentInput = blueInputs[blueIndex];
             redCurrentInput = redInputs[redIndex];
-            ResetControl();
 
+
+        }
+
+        private void OnGUI()
+        {
+            string inputEnableLabel = (inputEnabled) ? "Disable input" : "Enable input";
+            if (GUI.Button(new Rect(25, 25, 100, 30), inputEnableLabel))
+            {
+                inputEnabled = !inputEnabled;
+                if (inputEnabled)
+                {
+                    ResetControl();
+                }
+                else
+                {
+                    DisableAll(blueOrderedCharacterControl);
+                    DisableAll(redOrderedCharacterControl);
+                }
+            }
         }
 
         public void ResetControl()
@@ -54,8 +75,8 @@ namespace Character.Control
 
         private void Update()
         {
-            ReadBlueLRInputs();
-            ReadRedLRInputs();
+            //ReadBlueLRInputs();
+            //ReadRedLRInputs();
         }
 
         private void ReadRedLRInputs()
@@ -114,6 +135,18 @@ namespace Character.Control
             if (index == 1) return 2;
             if (index == 2) return 0;
             return 1;
+        }
+
+        public PlayerInput GetRandomPlayerInput(TEAM team)
+        {
+            int randomIndex = Random.Range(0, redInputs.Length);
+            if (team == TEAM.Red)
+            {
+                return redInputs[randomIndex];
+
+            }
+            return blueInputs[randomIndex];
+
         }
     }
 

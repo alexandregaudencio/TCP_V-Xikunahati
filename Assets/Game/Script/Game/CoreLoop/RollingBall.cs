@@ -1,8 +1,4 @@
 using Ball;
-using CoreLoop;
-using Game;
-using System.Collections;
-using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
@@ -34,7 +30,7 @@ namespace CoreLoop
             coreLoopController.NextStep();
         }
 
-        
+
 
 
     }

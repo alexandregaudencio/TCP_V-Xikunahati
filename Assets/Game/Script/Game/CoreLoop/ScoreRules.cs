@@ -1,8 +1,5 @@
 using Ball;
-using CoreLoop;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
@@ -21,6 +18,7 @@ namespace CoreLoop
         {
             ballController.ballOutField += MarkPoint;
             ballController.ballContactBodyTeam += OnTeamContactBall;
+
         }
 
         private void OnDisable()
@@ -29,24 +27,24 @@ namespace CoreLoop
             ballController.ballContactBodyTeam -= OnTeamContactBall;
 
         }
-
         private TEAM GetTeamPointed()
         {
             if (ballController.LastTeamHead != ballController.LastSideBallFell)
             {
                 return ballController.LastTeamHead;
-            } else
+            }
+            else
             {
                 return (ballController.LastTeamHead == TEAM.Blue) ? TEAM.Red : TEAM.Blue;
             }
-            
+
         }
 
         public void MarkPoint()
         {
             point?.Invoke(GetTeamPointed());
             lastTeamMarkedPoint = GetTeamPointed();
-            
+
         }
 
         public void OnTeamContactBall(TEAM team)
@@ -61,11 +59,17 @@ namespace CoreLoop
 
         private void Start()
         {
+            redScore.ResetScore();
+            blueScore.ResetScore();
             teamTurnHandler.turnOver += ApplyScore;
         }
 
+
+
         private void OnDestroy()
         {
+            redScore.ResetScore();
+            blueScore.ResetScore();
             teamTurnHandler.turnOver -= ApplyScore;
         }
 

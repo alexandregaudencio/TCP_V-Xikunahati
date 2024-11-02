@@ -1,16 +1,46 @@
+using Character.Control;
 using CoreLoop;
 using System;
 using System.Collections;
 using Team;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Ball
 {
+
+    public enum BallYPosition
+    {
+        DOWN,
+        MIDDLE,
+        UP
+    }
+
+    public enum BallVelocityMode
+    {
+        NORMAL,
+        POWER
+    }
+
+    [Serializable]
+    public struct BallState
+    {
+        public BallYPosition yPosition;
+        public BallVelocityMode velocityMode;
+
+        public BallState(BallYPosition yPosition, BallVelocityMode velocityMode)
+        {
+            this.yPosition = yPosition;
+            this.velocityMode = velocityMode;
+        }
+    }
+
+
     public class BallController : MonoBehaviour
     {
         private Rigidbody ballRigidbody;
         private int headCount = 0;
-        public event Action HeadOn;
+        public event Action<ThrowBallData> HeadedBall;
         public event Action ballOutField;
         public event Action<TEAM> BallChangeFieldSide;
         public event Action<TEAM> ballTouchFieldSide;
@@ -22,6 +52,8 @@ namespace Ball
         public TEAM LastTeamHead => lastTeamHead;
         private TEAM lastSideBallFell;
         public TEAM LastSideBallFell => lastSideBallFell;
+        [SerializeField] ThrowBallData throwBallData;
+
 
         private void Awake()
         {
@@ -82,7 +114,9 @@ namespace Ball
             if (other.CompareTag("Head"))
             {
                 lastTeamHead = teamTurnHandler.TeamTurn;
-                IncreaseHeadCount();
+                headCount++;
+                throwBallData = GenerateThrowBallData();
+                HeadedBall?.Invoke(throwBallData);
             }
         }
 
@@ -109,14 +143,22 @@ namespace Ball
             lastSideBallFell = teamSide;
         }
 
-        private void IncreaseHeadCount()
+        private ThrowBallData GenerateThrowBallData()
         {
-
-            headCount++;
-            HeadOn?.Invoke();
+            TEAM targetTeam = (TEAM)(((int)LastTeamHead + 1) % 2);
+            PlayerInput targetPlayerInput = PlayerControlHandler.Instance.GetRandomPlayerInput(targetTeam);
+            return new ThrowBallData(GenerateBallState(), targetPlayerInput);
         }
 
-
+        private BallState GenerateBallState()
+        {
+            int yPosition = Random.Range(0, 3);
+            int velocity = Random.Range(0, 2);
+            return new BallState((BallYPosition)yPosition, (BallVelocityMode)velocity);
+        }
 
     }
+
+
+
 }
