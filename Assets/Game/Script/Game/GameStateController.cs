@@ -17,6 +17,7 @@ namespace Game
         private void Start()
         {
             Restart();
+            TransitionToState(GameState.GAMEPLAY);
         }
         public GameState nextGameState
         {
@@ -40,9 +41,9 @@ namespace Game
 
         private StateHandler GetHandler(GameState state)
         {
-            foreach(StateHandler handlers in stateHandlers)
+            foreach (StateHandler handlers in stateHandlers)
             {
-                if (handlers.State == state) 
+                if (handlers.State == state)
                     return handlers;
             }
             return null;
@@ -61,14 +62,16 @@ namespace Game
         {
             TransitionToState(nextGameState);
         }
+#if UNITY_EDITOR
         #region para fins de desenvolvimento
         private void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.F1)) TransitionToState(GameState.STARTUP);
-            //if (Input.GetKeyDown(KeyCode.F2)) TransitionToState(GameState.GAMEPLAY);
-            //if (Input.GetKeyDown(KeyCode.F3)) TransitionToState(GameState.ENDGAME);
+            if (Input.GetKeyDown(KeyCode.F1)) TransitionToState(GameState.STARTUP);
+            if (Input.GetKeyDown(KeyCode.F2)) TransitionToState(GameState.GAMEPLAY);
+            if (Input.GetKeyDown(KeyCode.F3)) TransitionToState(GameState.ENDGAME);
         }
         #endregion
+#endif
     }
 
 }

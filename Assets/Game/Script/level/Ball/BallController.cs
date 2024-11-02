@@ -1,8 +1,6 @@
-using Character;
 using CoreLoop;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
@@ -33,14 +31,12 @@ namespace Ball
 
         private void OnEnable()
         {
-            BallChangeFieldSide += ResetHeadsCount;
             ballTouchFieldSide += UpdateSideBallFell;
             StartCoroutine(UpdateBallFieldSide());
         }
 
         private void OnDisable()
         {
-            BallChangeFieldSide -= ResetHeadsCount;
             ballTouchFieldSide -= UpdateSideBallFell;
             StopCoroutine(UpdateBallFieldSide());
         }
@@ -120,10 +116,7 @@ namespace Ball
             HeadOn?.Invoke();
         }
 
-        private void ResetHeadsCount(TEAM t)
-        {
-            headCount = 0;
-        }
+
 
     }
 }
