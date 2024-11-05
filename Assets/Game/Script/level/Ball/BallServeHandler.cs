@@ -1,11 +1,8 @@
-using CoreLoop;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Game.CoreLoop;
 using Team;
 using UnityEngine;
 
-namespace Ball
+namespace Game.Ball
 {
     public class BallServeHandler : MonoBehaviour
     {
@@ -25,7 +22,7 @@ namespace Ball
 
         public Vector3 GetSaquePosition(TEAM characterTeam)
         {
-            Vector3 centerTarget = (characterTeam == TEAM.Blue) ? 
+            Vector3 centerTarget = (characterTeam == TEAM.Blue) ?
                 MiddleBlueArea.sharedMesh.bounds.center :
                 MiddleRedArea.sharedMesh.bounds.center;
             return centerTarget / 2 + Vector3.up * yServeOffset;

@@ -1,5 +1,4 @@
 using Character.Control;
-using System;
 using UnityEngine;
 
 
@@ -18,7 +17,7 @@ namespace Character
         public CharacterControl CharacterController { get => characterControl; set => characterControl = value; }
         public bool isMoving => characterControl.Control.direction() != Vector3.zero;
 
-        public Rigidbody CharacterRigidbody  => characterRigidbody;
+        public Rigidbody CharacterRigidbody => characterRigidbody;
 
         public Quaternion ForwardRotation { get => forwardRotation; set => forwardRotation = value; }
 
@@ -37,7 +36,7 @@ namespace Character
 
         private void FixedUpdate()
         {
-            characterRigidbody.velocity += Vector3.up * characterProperties.GravityForce * Time.fixedDeltaTime ;
+            //characterRigidbody.velocity += Vector3.up * characterProperties.GravityForce * Time.fixedDeltaTime ;
         }
         private void WalkBehaviour(Vector3 direction, float speed)
         {
@@ -53,7 +52,7 @@ namespace Character
         public void Idle()
         {
             CharacterRigidbody.velocity = Vector3.zero;
-            transform.rotation = Quaternion.Slerp(transform.rotation, forwardRotation, CharacterProperties.RotationSpeed*Time.fixedDeltaTime/2);
+            transform.rotation = Quaternion.Slerp(transform.rotation, forwardRotation, CharacterProperties.RotationSpeed * Time.fixedDeltaTime / 2);
         }
 
         private void Rotate()
@@ -76,7 +75,7 @@ namespace Character
         public void SlowndownMoving()
         {
 
-            characterRigidbody.velocity = Vector3.Slerp(CharacterRigidbody.velocity, Vector3.zero, 30*Time.fixedDeltaTime);
+            characterRigidbody.velocity = Vector3.Slerp(CharacterRigidbody.velocity, Vector3.zero, 30 * Time.fixedDeltaTime);
         }
 
 
@@ -89,7 +88,7 @@ namespace Character
         //Movimento de mergulho
         public void Dive()
         {
-            Vector3 direction = (transform.forward + Vector3.up * ((characterProperties.DiveImpoulse/2)/ characterProperties.DiveImpoulse));
+            Vector3 direction = (transform.forward + Vector3.up * ((characterProperties.DiveImpoulse / 2) / characterProperties.DiveImpoulse));
             characterRigidbody.AddForce(direction * characterProperties.DiveImpoulse, ForceMode.Impulse);
         }
 

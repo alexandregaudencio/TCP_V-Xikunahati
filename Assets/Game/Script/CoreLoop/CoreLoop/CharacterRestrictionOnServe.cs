@@ -1,10 +1,8 @@
 using Character.StateMachine;
-using System.Collections;
-using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class CharacterRestrictionOnServe : MonoBehaviour
     {
@@ -13,14 +11,15 @@ namespace CoreLoop
         [SerializeField] private ScoreRules scoreRules;
         public void RestricMovement()
         {
-            if(scoreRules.LastTeamMarkedPoint == TEAM.Blue)
+            if (scoreRules.LastTeamMarkedPoint == TEAM.Blue)
             {
-                foreach(PlayerStateMachine stateMachine in redCharacterFSM)
+                foreach (PlayerStateMachine stateMachine in redCharacterFSM)
                 {
                     stateMachine.GoServeState();
                 }
 
-            } else
+            }
+            else
             {
                 foreach (PlayerStateMachine stateMachine in blueCharacterFSM)
                 {

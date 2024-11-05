@@ -1,53 +1,55 @@
-using Ball;
-using CoreLoop;
 using UnityEngine;
 
-[ExecuteAlways]
-public class PreditionFeedback : MonoBehaviour
+namespace Game.Ball
 {
-    public BallController ballController;
-    public Camera redCamera;
-    public Camera blueCamera;
-    public Transform targetCameraTransform;
-
-    [SerializeField] private LayerMask blueLayer = LayerMask.NameToLayer("Vcam1");
-    [SerializeField] private LayerMask redLayer = LayerMask.NameToLayer("Vcam2");
-
-    private void Awake()
+    [ExecuteAlways]
+    public class PreditionFeedback : MonoBehaviour
     {
-        ballController = GetComponent<BallController>();
-    }
+        private BallController ballController;
+        public UnityEngine.Camera redCamera;
+        public UnityEngine.Camera blueCamera;
+        public Transform targetCameraTransform;
 
-    private void Start()
-    {
-        ballController.HeadedBall += OnHeadedBall;
-    }
+        [SerializeField] private LayerMask blueLayer = LayerMask.NameToLayer("Vcam1");
+        [SerializeField] private LayerMask redLayer = LayerMask.NameToLayer("Vcam2");
 
-    private void OnDestroy()
-    {
-        ballController.HeadedBall -= OnHeadedBall;
-    }
-
-    private void OnHeadedBall(ThrowBallData data)
-    {
-        if (data.TargetTeam == Team.TEAM.Red)
+        private void Awake()
         {
-            targetCameraTransform = redCamera.transform;
-            gameObject.layer = redLayer;
+            ballController = FindAnyObjectByType<BallController>();
         }
-        else
+
+        private void Start()
         {
-            targetCameraTransform = blueCamera.transform;
-            gameObject.layer = blueLayer;
+            ballController.HeadedBall += OnHeadedBall;
+        }
+
+        private void OnDestroy()
+        {
+            ballController.HeadedBall -= OnHeadedBall;
+        }
+
+        private void OnHeadedBall(ThrowBallData data)
+        {
+            if (data.TargetTeam == Team.TEAM.Red)
+            {
+                targetCameraTransform = redCamera.transform;
+                gameObject.layer = redLayer;
+            }
+            else
+            {
+                targetCameraTransform = blueCamera.transform;
+                gameObject.layer = blueLayer;
+            }
+        }
+
+        private void LateUpdate()
+        {
+            transform.forward = targetCameraTransform.forward;
+            //Vector2 direction = targetCameraTransform.position - transform.position;
+            //transform.LookAt(direction);
+            //transform.rotation = transform.rotation * Quaternion.Euler(rotationOffset);
+
         }
     }
 
-    private void LateUpdate()
-    {
-        transform.forward = targetCameraTransform.forward;
-        //Vector2 direction = targetCameraTransform.position - transform.position;
-        //transform.LookAt(direction);
-        //transform.rotation = transform.rotation * Quaternion.Euler(rotationOffset);
-
-    }
 }

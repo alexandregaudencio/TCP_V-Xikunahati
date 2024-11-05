@@ -1,9 +1,9 @@
-using Ball;
+using Game.Ball;
 using System;
 using Team;
 using UnityEngine;
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class ScoreRules : MonoBehaviour
     {

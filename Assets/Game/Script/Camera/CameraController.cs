@@ -1,6 +1,6 @@
 using AYellowpaper.SerializedCollections;
-using Ball;
-using CoreLoop;
+using Game.Ball;
+using Game.CoreLoop;
 using UnityEngine;
 
 namespace Game.Camera

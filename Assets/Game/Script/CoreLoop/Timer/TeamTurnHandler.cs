@@ -1,11 +1,10 @@
-using Ball;
+using Game.Ball;
 using System;
-using System.Collections;
 using Team;
 using UnityEngine;
 
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class TeamTurnHandler : MonoBehaviour
     {

@@ -1,12 +1,12 @@
 using Character.Control;
-using CoreLoop;
+using Game.CoreLoop;
 using System;
 using System.Collections;
 using Team;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Ball
+namespace Game.Ball
 {
 
     public enum BallYPosition

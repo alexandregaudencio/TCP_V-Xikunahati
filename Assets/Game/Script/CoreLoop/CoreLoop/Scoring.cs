@@ -3,7 +3,7 @@ using System.Collections;
 using Team;
 using UnityEngine;
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class Scoring : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace CoreLoop
         private CoreLoopController coreLoopController;
 
         private Players player;
-        
+
         private void Awake()
         {
             coreLoopController = GetComponentInParent<CoreLoopController>();
@@ -38,7 +38,7 @@ namespace CoreLoop
         private void OnDisable()
         {
             StopCoroutine(WaitForSkipState());
-        }       
+        }
 
 
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class CoreLoopController : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace CoreLoop
             get
             {
                 int currentIndex = Array.IndexOf(coreLoopHandlers, currentState);
-                if (currentIndex < coreLoopHandlers.Length -1)
+                if (currentIndex < coreLoopHandlers.Length - 1)
                 {
                     return coreLoopHandlers[currentIndex + 1].State;
                 }
@@ -42,7 +42,7 @@ namespace CoreLoop
 
         public void Restart()
         {
-            foreach(CoreLoopHandler handler in coreLoopHandlers)
+            foreach (CoreLoopHandler handler in coreLoopHandlers)
             {
                 handler.Hide();
             }

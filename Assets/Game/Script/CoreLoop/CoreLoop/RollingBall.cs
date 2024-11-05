@@ -1,8 +1,8 @@
-using Ball;
+using Game.Ball;
 using Team;
 using UnityEngine;
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class RollingBall : MonoBehaviour
     {

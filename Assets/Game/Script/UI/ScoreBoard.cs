@@ -1,9 +1,8 @@
-using CoreLoop;
 using Team;
 using TMPro;
 using UnityEngine;
 
-namespace Game
+namespace Game.CoreLoop
 {
     public class ScoreBoard : MonoBehaviour
     {

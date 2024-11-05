@@ -1,7 +1,7 @@
-using CoreLoop;
+using Game.CoreLoop;
 using UnityEngine;
 
-namespace Ball
+namespace Game.Ball
 {
     [RequireComponent(typeof(SphereCollider)),
     RequireComponent(typeof(Rigidbody))]

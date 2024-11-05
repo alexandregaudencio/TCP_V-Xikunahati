@@ -1,7 +1,7 @@
-using Ball;
+using Game.Ball;
 using UnityEngine;
 
-namespace CoreLoop
+namespace Game.CoreLoop
 {
     public class Serve : MonoBehaviour
     {
