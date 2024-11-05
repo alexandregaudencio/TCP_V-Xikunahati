@@ -1,15 +1,17 @@
 using Game.AudioControl;
+using Game.CoreLoop;
+using Team;
 using UnityEngine;
 
 namespace Game.Character
 {
-    [RequireComponent(typeof(PlayerInput))]
     public class CharacterControl : MonoBehaviour
     {
+        private TeamSelection teamSelection;
         [SerializeField] private MeshRenderer feedback;
-        private PlayerInput playerInput;
+        private PlayerControl playerControl;
         private AIControl aiControl;
-        private Control control;
+        public Control control;
         private CharacterBehaviour behaviour;
         private CharacterAnimation anim;
         private CharacterParticle particle;
@@ -22,30 +24,50 @@ namespace Game.Character
         public CharacterHeadControl HeadControl { get => headControl; set => headControl = value; }
         public CharacterSoundControl SoundControl { get => soundControl; set => soundControl = value; }
 
+        private TeamTurnHandler TeamTurnHandler;
+
         private void Awake()
         {
+            TeamTurnHandler = FindAnyObjectByType<TeamTurnHandler>();
+            teamSelection = GetComponent<TeamSelection>();
             behaviour = GetComponent<CharacterBehaviour>();
             anim = GetComponent<CharacterAnimation>();
             particle = GetComponent<CharacterParticle>();
             headControl = GetComponent<CharacterHeadControl>();
             soundControl = GetComponent<CharacterSoundControl>();
-            playerInput = GetComponent<PlayerInput>();
+            playerControl = GetComponent<PlayerControl>();
             aiControl = GetComponent<AIControl>();
 
+            SetControl(aiControl);
         }
-        public void SetControl(Control control)
+
+
+        //subscribed on Serve coreloop state enter/start
+        public void ConfigServing()
         {
+            bool isCurrentTeamServer = (TeamTurnHandler.TeamTurn == teamSelection.team);
+            playerControl.SetServerState(isCurrentTeamServer);
+            if (isCurrentTeamServer) SetPlayerControl();
+
+        }
+
+        private void SetControl(Control control)
+        {
+            control.enabled = true;
             this.control = control;
         }
 
         public void SetAiControl()
         {
+            playerControl.enabled = false;
+
             SetControl(aiControl);
             feedback.enabled = false;
         }
         public void SetPlayerControl()
         {
-            SetControl(playerInput);
+            aiControl.enabled = false;
+            SetControl(playerControl);
             feedback.enabled = true;
         }
 

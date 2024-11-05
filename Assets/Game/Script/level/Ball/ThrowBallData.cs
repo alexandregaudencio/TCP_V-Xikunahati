@@ -11,14 +11,14 @@ namespace Game.Ball
     public struct ThrowBallData
     {
         public BallState BallState;
-        public PlayerInput PlayerTarget;
+        public CharacterControl CharacterControl;
         public Vector3 FinalPositionOffset;
         public TEAM TargetTeam;
-        public ThrowBallData(BallState ballState, PlayerInput playerTarget, TEAM targetTeam)
+        public ThrowBallData(BallState ballState, CharacterControl characterControl, TEAM targetTeam)
         {
-            FinalPositionOffset = playerTarget.transform.position + new Vector3(Random.Range(-1, 1), 4, Random.Range(-1, 1));
+            FinalPositionOffset = characterControl.transform.position + new Vector3(Random.Range(-1, 1), 4, Random.Range(-1, 1));
             BallState = ballState;
-            PlayerTarget = playerTarget;
+            CharacterControl = characterControl;
             this.TargetTeam = targetTeam;
         }
     }

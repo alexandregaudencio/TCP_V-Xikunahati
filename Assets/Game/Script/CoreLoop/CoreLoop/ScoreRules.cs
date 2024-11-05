@@ -17,14 +17,14 @@ namespace Game.CoreLoop
         private void OnEnable()
         {
             ballController.ballOutField += MarkPoint;
-            ballController.ballContactBodyTeam += OnTeamContactBall;
+            ballController.ballContactBodyTeam += OnBallContactBodyTeam;
 
         }
 
         private void OnDisable()
         {
             ballController.ballOutField -= MarkPoint;
-            ballController.ballContactBodyTeam -= OnTeamContactBall;
+            ballController.ballContactBodyTeam -= OnBallContactBodyTeam;
 
         }
         private TEAM GetTeamPointed()
@@ -47,7 +47,7 @@ namespace Game.CoreLoop
 
         }
 
-        public void OnTeamContactBall(TEAM team)
+        public void OnBallContactBodyTeam(TEAM team)
         {
             TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
             point?.Invoke(teamScored);

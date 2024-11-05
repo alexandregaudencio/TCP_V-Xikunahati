@@ -9,13 +9,12 @@ namespace Game.CoreLoop
         private PriorityControl[] priorityControls;
 
         private CoreLoopController coreLoopController;
-        private CharacterRestrictionOnServe restrictionOnServe;
         private void Awake()
         {
             coreLoopController = GetComponentInParent<CoreLoopController>();
             priorityControls = FindObjectsOfType<PriorityControl>();
-            restrictionOnServe = GetComponent<CharacterRestrictionOnServe>();
         }
+
 
 
         private void OnEnable()

@@ -32,6 +32,7 @@ namespace Game.CoreLoop
             this.teamTurn = teamTurn;
         }
 
+
     }
 
 }

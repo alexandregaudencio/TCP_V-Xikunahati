@@ -11,7 +11,7 @@ namespace Game.CoreLoop
         private CoreLoopController coreLoopController;
         private void Awake()
         {
-            teamTurnHandler = GetComponent<TeamTurnHandler>();
+            teamTurnHandler = FindObjectOfType<TeamTurnHandler>();
             coreLoopController = GetComponentInParent<CoreLoopController>();
         }
 

@@ -160,8 +160,8 @@ namespace Game.Ball
         private ThrowBallData GenerateThrowBallData()
         {
             TEAM targetTeam = (TEAM)(((int)LastTeamHead + 1) % 2);
-            PlayerInput targetPlayerInput = PlayerControlHandler.Instance.GetRandomPlayerInput(targetTeam);
-            return new ThrowBallData(GenerateBallState(), targetPlayerInput, targetTeam);
+            CharacterControl character = PlayerControlHandler.Instance.GetRandomCharacter(targetTeam);
+            return new ThrowBallData(GenerateBallState(), character, targetTeam);
         }
 
         private BallState GenerateBallState()

@@ -13,7 +13,7 @@ namespace Game
     public class StateHandler : ViewHandler
     {
         [SerializeField] private GameState state;
-        public GameState State { get => state;}
+        public GameState State { get => state; }
 
         public UnityEvent onStateStart;
         public UnityEvent onStateEnd;
