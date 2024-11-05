@@ -23686,11 +23686,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 692229526399855613, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.040678
+      value: 28.04068
       objectReference: {fileID: 0}
     - target: {fileID: 692229526399855613, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.345648
+      value: 28.345654
       objectReference: {fileID: 0}
     - target: {fileID: 887300629936323784, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: duration
@@ -23762,7 +23762,7 @@ PrefabInstance:
       objectReference: {fileID: 1124686607}
     - target: {fileID: 5709336507601779639, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: CameraSystem
       objectReference: {fileID: 0}
     - target: {fileID: 5848705336751130453, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: duration
@@ -23774,19 +23774,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6250068064035920209, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000014989032
+      value: -0.000003317189
       objectReference: {fileID: 0}
     - target: {fileID: 6250068064035920209, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0000011795203
+      value: -0.000005037464
       objectReference: {fileID: 0}
     - target: {fileID: 6250068065117427666, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.2506027
+      value: -6.2506046
       objectReference: {fileID: 0}
     - target: {fileID: 6250068065117427666, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.056911
+      value: 29.056908
       objectReference: {fileID: 0}
     - target: {fileID: 6250068065117427667, guid: f66edd2f7229b144185bde1ff8ed3d28, type: 3}
       propertyPath: m_Targets.Array.data[0].target
