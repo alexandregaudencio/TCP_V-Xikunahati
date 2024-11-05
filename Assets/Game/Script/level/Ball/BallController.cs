@@ -120,6 +120,13 @@ namespace Ball
             }
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(throwBallData.FinalPositionOffset, 0.5f);
+
+        }
+
         public IEnumerator UpdateBallFieldSide()
         {
             while (true)
@@ -138,6 +145,8 @@ namespace Ball
 
         }
 
+
+
         public void UpdateSideBallFell(TEAM teamSide)
         {
             lastSideBallFell = teamSide;
@@ -147,7 +156,7 @@ namespace Ball
         {
             TEAM targetTeam = (TEAM)(((int)LastTeamHead + 1) % 2);
             PlayerInput targetPlayerInput = PlayerControlHandler.Instance.GetRandomPlayerInput(targetTeam);
-            return new ThrowBallData(GenerateBallState(), targetPlayerInput);
+            return new ThrowBallData(GenerateBallState(), targetPlayerInput, targetTeam);
         }
 
         private BallState GenerateBallState()

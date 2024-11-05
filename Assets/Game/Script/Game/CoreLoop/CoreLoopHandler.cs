@@ -2,6 +2,7 @@ using Ball;
 using Character.Control;
 using Game;
 using System;
+using Team;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -20,13 +21,14 @@ namespace CoreLoop
     {
         public BallState BallState;
         public PlayerInput PlayerTarget;
-        public Vector3 finalPositionOffset;
-
-        public ThrowBallData(BallState ballState, PlayerInput playerTarget)
+        public Vector3 FinalPositionOffset;
+        public TEAM TargetTeam;
+        public ThrowBallData(BallState ballState, PlayerInput playerTarget, TEAM targetTeam)
         {
-            finalPositionOffset = playerTarget.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+            FinalPositionOffset = playerTarget.transform.position + new Vector3(Random.Range(-1, 1), 4, Random.Range(-1, 1));
             BallState = ballState;
             PlayerTarget = playerTarget;
+            this.TargetTeam = targetTeam;
         }
     }
 

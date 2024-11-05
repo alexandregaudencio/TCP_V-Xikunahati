@@ -27,13 +27,13 @@ namespace Character.Control
             -1,
             Random.Range(-radiusCenter, radiusCenter));
 
-        [SerializeField] [Range(3,7)] private float maxIntervalToChangeBehaviour;
+        [SerializeField][Range(1, 7)] private float maxIntervalToChangeBehaviour;
 
         public AiBehaviour AiBehaviour = AiBehaviour.IDLE;
-        [SerializeField] [Range(1, 100)] float speedPercentage;
+        [SerializeField][Range(30, 100)] float speedPercentage;
         private List<Vector3> positionsTarget => new List<Vector3>() {
             centerPosition,
-            centerPosition+randomPosition 
+            centerPosition+randomPosition
         };
 
         private void Start()
@@ -52,7 +52,7 @@ namespace Character.Control
         {
             StopAllCoroutines();
         }
-        
+
         public void StartCoroutines()
         {
             StartCoroutine(ChangeBehaviour());
@@ -72,33 +72,15 @@ namespace Character.Control
         //}
         private IEnumerator ChangeBehaviour()
         {
-            while(true)
+            while (true)
             {
                 //Mathf.
-                int targetIndex = Mathf.Abs(Random.Range(0, 2));
-                AiBehaviour = (AiBehaviour)targetIndex;
-                yield return new WaitForSeconds(Random.Range(0, 3));
+                AiBehaviour behaviour = (AiBehaviour)Mathf.Abs(Random.Range(0, 2));
+                AiBehaviour = behaviour;
+                yield return new WaitForSeconds(1);
 
             }
         }
-
-        //private IEnumerator PlayRandomIdleAnim()
-        //{
-        //    while(true)
-        //    {
-        //        //1/3 chance for play secondary idle animation
-        //        float random = Random.Range(0, 110);
-        //        if(random < 2)
-        //        {
-        //            Debug.Log("ANIM PLAY");
-        //            characterAnimation.Anim.Play("idle2");
-        //            yield return new WaitForSeconds(Random.Range(1f, 2f));
-        //        }
-        //        Debug.Log(random);
-
-        //    }
-        //}
-
 
         private IEnumerator ChangeTargetPosition()
         {
@@ -107,7 +89,7 @@ namespace Character.Control
                 //Mathf.
                 int targetIndex = Mathf.Abs(Random.Range(0, 2));
                 targetPosition = positionsTarget[targetIndex];
-                yield return new WaitForSeconds(Random.Range(3, maxIntervalToChangeBehaviour));
+                yield return new WaitForSeconds(1);
 
             }
         }
@@ -135,7 +117,8 @@ namespace Character.Control
                 if (DistanceToTarget > distanceLimit)
                 {
                     Vector3 distanceVector = targetPosition - transform.position;
-                    return new Vector3(distanceVector.x, 0, distanceVector.z).normalized*(speedPercentage/100);
+                    float randomSpeed = Random.Range(speedPercentage - 10, speedPercentage + 10);
+                    return new Vector3(distanceVector.x, 0, distanceVector.z).normalized * (randomSpeed / 100);
                 }
             }
             return Vector3.zero;
@@ -184,7 +167,7 @@ namespace Character.Control
 
         private void FixedUpdate()
         {
-            
+
         }
 
 
@@ -198,7 +181,7 @@ namespace Character.Control
 //    [SerializeField] private Transform ballTransform;
 //    [SerializeField] private CharacterAnimation characterAnimation;
 //    [SerializeField] private PriorityControl priorityControl;
-    
+
 //    public AIBehaviour(Transform ballTransform, CharacterAnimation characterAnimation, PriorityControl priorityControl)
 //    {
 //        this.ballTransform = ballTransform;
