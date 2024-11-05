@@ -1,6 +1,7 @@
+using Game.AudioControl;
 using UnityEngine;
 
-namespace Character.Control
+namespace Game.Character
 {
     [RequireComponent(typeof(PlayerInput))]
     public class CharacterControl : MonoBehaviour
@@ -14,7 +15,7 @@ namespace Character.Control
         private CharacterParticle particle;
         private CharacterHeadControl headControl;
         private CharacterSoundControl soundControl;
-        public Control Control { get => control;private set => control = value; }
+        public Control Control { get => control; private set => control = value; }
         public CharacterBehaviour Behaviour { get => behaviour; set => behaviour = value; }
         public CharacterAnimation Animator { get => anim; set => anim = value; }
         public CharacterParticle Particle { get => particle; set => particle = value; }
@@ -32,7 +33,7 @@ namespace Character.Control
             aiControl = GetComponent<AIControl>();
 
         }
-         public void SetControl(Control control)
+        public void SetControl(Control control)
         {
             this.control = control;
         }

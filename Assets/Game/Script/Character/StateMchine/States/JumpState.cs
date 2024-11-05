@@ -1,7 +1,6 @@
-using Character.Control;
 using UnityEngine;
 
-namespace Character.StateMachine
+namespace Game.Character.StateMachine
 {
     public class JumpState : State
     {
@@ -33,7 +32,7 @@ namespace Character.StateMachine
                 {
                     stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
                 }
-                
+
             }
 
         }

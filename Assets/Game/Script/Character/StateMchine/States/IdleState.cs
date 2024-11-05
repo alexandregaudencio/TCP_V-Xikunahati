@@ -1,8 +1,6 @@
-
-using Character.Control;
 using UnityEngine;
 
-namespace Character.StateMachine
+namespace Game.Character.StateMachine
 {
     public class IdleState : State
     {

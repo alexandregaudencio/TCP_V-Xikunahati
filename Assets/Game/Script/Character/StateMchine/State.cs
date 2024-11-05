@@ -1,9 +1,8 @@
-using Character.Control;
 using UnityEngine;
 
-namespace Character.StateMachine
+namespace Game.Character.StateMachine
 {
-    public abstract class State 
+    public abstract class State
     {
         public abstract void EnterState(CharacterControl controller);
         public abstract void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine);

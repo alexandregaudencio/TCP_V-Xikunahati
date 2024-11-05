@@ -1,4 +1,5 @@
-using Character.Control;
+using Game.AudioControl;
+using Game.Character;
 using Game.CoreLoop;
 using System;
 using System.Collections;
@@ -54,10 +55,12 @@ namespace Game.Ball
         public TEAM LastSideBallFell => lastSideBallFell;
         [SerializeField] ThrowBallData throwBallData;
 
+        private RandomAudioPlay randomAudioPlay;
 
         private void Awake()
         {
             ballRigidbody = GetComponent<Rigidbody>();
+            randomAudioPlay = GetComponent<RandomAudioPlay>();
         }
 
 
@@ -117,6 +120,8 @@ namespace Game.Ball
                 headCount++;
                 throwBallData = GenerateThrowBallData();
                 HeadedBall?.Invoke(throwBallData);
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.head, 0);
+
             }
         }
 

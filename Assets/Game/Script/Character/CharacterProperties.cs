@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Character
+namespace Game.Character
 {
     [CreateAssetMenu(fileName = "Character properties")]
     public class CharacterProperties : ScriptableObject

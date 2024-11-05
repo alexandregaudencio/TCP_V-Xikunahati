@@ -1,8 +1,7 @@
-using Character.Control;
 using UnityEngine;
 
 
-namespace Character
+namespace Game.Character
 {
 
     public class CharacterBehaviour : MonoBehaviour

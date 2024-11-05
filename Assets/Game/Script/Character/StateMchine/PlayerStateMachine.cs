@@ -1,9 +1,7 @@
-using Character.Control;
-using System;
 using UnityEngine;
 
 
-namespace Character.StateMachine
+namespace Game.Character.StateMachine
 {
     public class PlayerStateMachine : MonoBehaviour
     {

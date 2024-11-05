@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Character.StateMachine
+namespace Game.Character.StateMachine
 {
     public class StateInstances
-    { 
+    {
         public readonly IdleState idleState;
         public readonly MovingState movingState;
         public readonly JumpState jumpState;

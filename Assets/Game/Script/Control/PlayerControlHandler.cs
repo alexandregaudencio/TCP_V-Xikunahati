@@ -1,7 +1,7 @@
 using Team;
 using UnityEngine;
 
-namespace Character.Control
+namespace Game.Character
 {
     public class PlayerControlHandler : MonoBehaviour
     {

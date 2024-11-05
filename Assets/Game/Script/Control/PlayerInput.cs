@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Character.Control
+namespace Game.Character
 {
     public enum Players
     {

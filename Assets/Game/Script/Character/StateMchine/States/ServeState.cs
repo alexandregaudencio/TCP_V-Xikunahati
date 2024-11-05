@@ -1,9 +1,6 @@
-using Character.Control;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Character.StateMachine
+namespace Game.Character.StateMachine
 {
     public class ServeState : State
     {
@@ -33,7 +30,7 @@ namespace Character.StateMachine
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-            if(controller.Control.dive())
+            if (controller.Control.dive())
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
             }

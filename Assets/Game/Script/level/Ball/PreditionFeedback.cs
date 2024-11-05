@@ -10,8 +10,7 @@ namespace Game.Ball
         public UnityEngine.Camera blueCamera;
         public Transform targetCameraTransform;
 
-        [SerializeField] private LayerMask blueLayer = LayerMask.NameToLayer("Vcam1");
-        [SerializeField] private LayerMask redLayer = LayerMask.NameToLayer("Vcam2");
+
 
         private void Awake()
         {
@@ -33,12 +32,12 @@ namespace Game.Ball
             if (data.TargetTeam == Team.TEAM.Red)
             {
                 targetCameraTransform = redCamera.transform;
-                gameObject.layer = redLayer;
+                gameObject.layer = LayerMask.NameToLayer("Vcam2");
             }
             else
             {
                 targetCameraTransform = blueCamera.transform;
-                gameObject.layer = blueLayer;
+                gameObject.layer = LayerMask.NameToLayer("Vcam1");
             }
         }
 

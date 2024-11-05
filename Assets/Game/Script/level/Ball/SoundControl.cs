@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace Ball
+namespace Game.AudioControl
 {
     public class SoundControl : MonoBehaviour
     {

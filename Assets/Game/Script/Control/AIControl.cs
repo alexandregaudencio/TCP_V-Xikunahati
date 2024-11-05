@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Character.Control
+namespace Game.Character
 {
 
     public enum AiBehaviour
