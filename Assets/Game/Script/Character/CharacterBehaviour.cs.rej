@@ -1,0 +1,9 @@
+diff a/Assets/Game/Script/Character/CharacterBehaviour.cs b/Assets/Game/Script/Character/CharacterBehaviour.cs	(rejected hunks)
+@@ -33,7 +33,6 @@
+             characterControl = GetComponent<CharacterControl>();
+         }
+ 
+-            //characterRigidbody.velocity += Vector3.up * characterProperties.GravityForce * Time.fixedDeltaTime ;
+         private void WalkBehaviour(Vector3 direction, float speed)
+         {
+             Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);

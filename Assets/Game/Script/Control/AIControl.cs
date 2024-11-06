@@ -16,7 +16,6 @@ namespace Game.Character
     public class AIControl : Control
     {
         [SerializeField] private Transform ballTransform;
-        private CharacterAnimation characterAnimation;
         [SerializeField] private PriorityControl priorityControl;
         [SerializeField] private float distanceLimit = 0.2f;
         public float DistanceToTarget => Vector3.Distance(targetPosition, transform.position);
@@ -95,11 +94,6 @@ namespace Game.Character
             }
         }
 
-
-        private void Awake()
-        {
-            characterAnimation = GetComponent<CharacterAnimation>();
-        }
 
         public override bool ButtonReturn()
         {

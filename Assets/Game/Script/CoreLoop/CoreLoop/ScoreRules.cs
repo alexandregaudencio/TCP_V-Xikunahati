@@ -21,7 +21,7 @@ namespace Game.CoreLoop
             redScore.ResetScore();
             blueScore.ResetScore();
             ballController.ballOutField += MarkPoint;
-            teamTurnHandler.turnOver += ApplyScore;
+            point += ApplyScore;
             ballController.ballContactBodyTeam += OnBallContactBodyTeam;
 
         }
@@ -30,7 +30,7 @@ namespace Game.CoreLoop
         {
             redScore.ResetScore();
             blueScore.ResetScore();
-            teamTurnHandler.turnOver -= ApplyScore;
+            point -= ApplyScore;
             ballController.ballOutField -= MarkPoint;
             ballController.ballContactBodyTeam -= OnBallContactBodyTeam;
 
@@ -50,6 +50,7 @@ namespace Game.CoreLoop
 
         public void MarkPoint()
         {
+            Debug.Log("mark point");
             point?.Invoke(GetTeamPointed());
             lastTeamMarkedPoint = GetTeamPointed();
 
@@ -67,6 +68,7 @@ namespace Game.CoreLoop
 
         private void ApplyScore(TEAM team)
         {
+            Debug.Log("applying score");
             if (team == TEAM.Red) redScore.IncreaseScore();
             else blueScore.IncreaseScore();
         }

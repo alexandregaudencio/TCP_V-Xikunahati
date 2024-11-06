@@ -19,7 +19,8 @@ namespace Game.Character
 
         private void Update()
         {
-            characterBehaviour.Moving();
+            //GetComponent<PlayerStateMachine>().TransitionToState(GetComponent<PlayerStateMachine>().StateInstances.movingState);
+
             if (isServingBall) { dive(); return; }
 
 
@@ -44,7 +45,7 @@ namespace Game.Character
 
         public override Vector3 direction()
         {
-            return Vector3.zero;
+            return PlayerInput.direction(team);
         }
 
         public override bool dive()
@@ -55,13 +56,13 @@ namespace Game.Character
 
         public override bool head()
         {
-            return false;
+            return PlayerInput.head(team);
 
         }
 
         public override bool jump()
         {
-            return false;
+            return PlayerInput.jump(team);
         }
 
         public override bool L()
@@ -80,12 +81,12 @@ namespace Game.Character
 
         protected override float xAxis()
         {
-            return 0;
+            return PlayerInput.xAxis(team);
         }
 
         protected override float yAxis()
         {
-            return 0;
+            return PlayerInput.yAxis(team);
         }
     }
 }

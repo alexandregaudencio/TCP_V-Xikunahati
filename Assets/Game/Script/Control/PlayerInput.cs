@@ -22,7 +22,7 @@ namespace Game.Character
 
         public static Vector3 direction(TEAM team)
         {
-            return new Vector3(xAxis(team + 1), 0, yAxis(team + 1));
+            return new Vector3(xAxis(team), 0, yAxis(team));
         }
 
         public static bool jump(TEAM team)

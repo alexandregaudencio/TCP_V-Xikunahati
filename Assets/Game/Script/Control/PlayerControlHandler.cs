@@ -1,5 +1,5 @@
 using AYellowpaper.SerializedCollections;
-using Team;
+using Game.Ball;
 using UnityEngine;
 
 namespace Game.Character
@@ -8,20 +8,35 @@ namespace Game.Character
     {
         [SerializeField, SerializedDictionary("Team", "Character Control")]
         private SerializedDictionary<TEAM, CharacterControl[]> characters;
-
+        private BallController ballController;
         public static PlayerControlHandler Instance;
 
         private bool inputEnabled;
 
         private void Awake()
         {
+            ballController = FindObjectOfType<BallController>();
             DisableAll();
         }
 
         private void Start()
         {
             Instance = this;
+            ballController.HeadedBall += OnHeadedBall;
         }
+
+        private void OnDestroy()
+        {
+            ballController.HeadedBall -= OnHeadedBall;
+
+        }
+
+        private void OnHeadedBall(ThrowBallData data)
+        {
+            DisableAll();
+            data.CharacterControl.SetPlayerControl();
+        }
+
 
         private void OnGUI()
         {

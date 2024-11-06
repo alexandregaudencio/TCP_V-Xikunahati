@@ -13,8 +13,8 @@ InputManager:
     positiveButton: d
     altNegativeButton: 
     altPositiveButton: 
-    gravity: -0.42
-    dead: 0.17
+    gravity: 10
+    dead: 0.001
     sensitivity: 10
     snap: 1
     invert: 0
@@ -29,9 +29,9 @@ InputManager:
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 0.1
-    dead: 0.2
-    sensitivity: 1.6
+    gravity: 10
+    dead: 0.001
+    sensitivity: 10
     snap: 1
     invert: 0
     type: 2
@@ -437,3 +437,4 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 1
+  m_UsePhysicalKeys: 0
