@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
-namespace Team
+
+namespace Game.Character
 {
     [Serializable] public enum TEAM { Red, Blue, NONE };
+
+
     public class TeamSelection : MonoBehaviour
     {
         public TEAM team = TEAM.Red;

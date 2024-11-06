@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Team;
+using Game.Level;
 using UnityEngine;
 
 namespace Game
@@ -19,7 +17,7 @@ namespace Game
 
         public void configCharacterForGameplay()
         {
-            foreach(PriorityControl priorityControl in priorityControls)
+            foreach (PriorityControl priorityControl in priorityControls)
             {
                 priorityControl.EnableCharacter(true);
                 priorityControl.SetInitialPosition();

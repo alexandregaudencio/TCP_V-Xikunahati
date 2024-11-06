@@ -1,5 +1,5 @@
+using Game.Character;
 using Game.CoreLoop;
-using Team;
 using UnityEngine;
 
 namespace Game.Ball

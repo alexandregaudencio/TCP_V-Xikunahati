@@ -33,10 +33,6 @@ namespace Game.Character
             characterControl = GetComponent<CharacterControl>();
         }
 
-        private void FixedUpdate()
-        {
-            //characterRigidbody.velocity += Vector3.up * characterProperties.GravityForce * Time.fixedDeltaTime ;
-        }
         private void WalkBehaviour(Vector3 direction, float speed)
         {
             Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);

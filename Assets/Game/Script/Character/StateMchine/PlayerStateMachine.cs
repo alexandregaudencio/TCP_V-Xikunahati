@@ -8,10 +8,6 @@ namespace Game.Character.StateMachine
         private State currentState;
         private CharacterControl characterController;
         private StateInstances stateInstances;
-        // private void OnGUI()
-        // {
-        //     GUI.Label(new Rect(100, 1000, 1000, 100), currentState.ToString());
-        // }
 
         public StateInstances StateInstances { get => stateInstances; }
         private void Awake()

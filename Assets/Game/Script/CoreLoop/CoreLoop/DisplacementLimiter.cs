@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Team;
 using UnityEngine;
 
-namespace Character
+namespace Game.Character
 {
     public class DisplacementLimiter : MonoBehaviour
     {
@@ -22,16 +20,16 @@ namespace Character
         }
         private void FixedUpdate()
         {
-            if(!outBounds)
+            if (!outBounds)
             {
                 lastXZPositionInBounds = new Vector2(transform.position.x, transform.position.z);
             }
 
-            if(outBounds)
+            if (outBounds)
             {
                 transform.position = new Vector3(
-                    lastXZPositionInBounds.x, 
-                    transform.position.y, 
+                    lastXZPositionInBounds.x,
+                    transform.position.y,
                     lastXZPositionInBounds.y
                 );
             }
@@ -60,17 +58,18 @@ namespace Character
 
         private bool OutFieldRange()
         {
-            if (Mathf.Abs(forwardPointLimit.magnitude) > fieldRangeCollider.radius) {
+            if (Mathf.Abs(forwardPointLimit.magnitude) > fieldRangeCollider.radius)
+            {
                 return true;
             }
             return false;
-            
+
         }
 
         //out if team blue is On negative zone: < (0,0,0)  //out if team red is on positive zone: > (0,0,0)
         private bool OutTeamZone()
         {
-            if(teamSelection.team == TEAM.Blue )
+            if (teamSelection.team == TEAM.Blue)
             {
                 return forwardPointLimit.z > 0 ? true : false;
             }

@@ -1,3 +1,4 @@
+using Game.Character;
 using UnityEngine;
 
 namespace Game.Ball
@@ -9,8 +10,6 @@ namespace Game.Ball
         public UnityEngine.Camera redCamera;
         public UnityEngine.Camera blueCamera;
         public Transform targetCameraTransform;
-
-
 
         private void Awake()
         {
@@ -29,7 +28,7 @@ namespace Game.Ball
 
         private void OnHeadedBall(ThrowBallData data)
         {
-            if (data.TargetTeam == Team.TEAM.Red)
+            if (data.TargetTeam == TEAM.Red)
             {
                 targetCameraTransform = redCamera.transform;
                 gameObject.layer = LayerMask.NameToLayer("Vcam2");

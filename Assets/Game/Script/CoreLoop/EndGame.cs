@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Game.Character;
 using Team;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,9 +20,9 @@ namespace Game
 
         private TEAM GetWinnerTeam()
         {
-            if (redScore.TeamScore < blueScore.TeamScore) 
+            if (redScore.TeamScore < blueScore.TeamScore)
                 return TEAM.Blue;
-            if (redScore.TeamScore > blueScore.TeamScore) 
+            if (redScore.TeamScore > blueScore.TeamScore)
                 return TEAM.Red;
             return TEAM.NONE;
 
@@ -30,15 +30,17 @@ namespace Game
 
         public void ShowWinner()
         {
-            if(GetWinnerTeam() == TEAM.Red)
+            if (GetWinnerTeam() == TEAM.Red)
             {
                 redUIImage.sprite = winnerSprite;
                 blueUIImage.sprite = LoserSprite;
-            } else if(GetWinnerTeam() == TEAM.Blue)
+            }
+            else if (GetWinnerTeam() == TEAM.Blue)
             {
                 redUIImage.sprite = LoserSprite;
                 blueUIImage.sprite = winnerSprite;
-            } else
+            }
+            else
             {
                 redUIImage.sprite = winnerSprite;
                 blueUIImage.sprite = winnerSprite;

@@ -4,18 +4,28 @@ namespace Game.Character
 {
     public class PlayerControl : Control
     {
-
+        private CharacterBehaviour characterBehaviour;
+        public TeamSelection teamSelection;
         [field: SerializeField] public bool isServingBall { get; set; }
+
+        private TEAM team => teamSelection.team;
+
 
         private void Awake()
         {
+            teamSelection = GetComponent<TeamSelection>();
+            characterBehaviour = GetComponent<CharacterBehaviour>();
         }
 
-        private void Start()
+        private void Update()
         {
+            characterBehaviour.Moving();
+            if (isServingBall) { dive(); return; }
+
+
+
 
         }
-
 
         public void SetServerState(bool value)
         {
@@ -39,7 +49,8 @@ namespace Game.Character
 
         public override bool dive()
         {
-            return false;
+
+            return PlayerInput.dive(team);
         }
 
         public override bool head()
