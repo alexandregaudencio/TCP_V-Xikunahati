@@ -3,7 +3,6 @@ using Game.Character;
 using Game.CoreLoop;
 using System;
 using System.Collections;
-using Team;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -53,7 +52,7 @@ namespace Game.Ball
         public TEAM LastTeamHead => lastTeamHead;
         private TEAM lastSideBallFell;
         public TEAM LastSideBallFell => lastSideBallFell;
-        [SerializeField] ThrowBallData throwBallData;
+        public ThrowBallData throwBallData;
 
         private RandomAudioPlay randomAudioPlay;
 
@@ -125,11 +124,11 @@ namespace Game.Ball
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(throwBallData.FinalPositionOffset, 0.5f);
-
+            Gizmos.color = Color.black;
+            Gizmos.DrawSphere(new Vector3(throwBallData.horizontalPositon.x, throwBallData.characterPosition.y, throwBallData.horizontalPositon.y), 0.5f);
+            if (throwBallData.CharacterControl != null) Gizmos.DrawLine(throwBallData.CharacterControl.transform.position, throwBallData.CharacterControl.transform.position + throwBallData.CharacterControl.transform.forward);
         }
 
         public IEnumerator UpdateBallFieldSide()

@@ -1,3 +1,4 @@
+using Game.Ball;
 using UnityEngine;
 
 namespace Game.Character
@@ -6,16 +7,26 @@ namespace Game.Character
     {
         private CharacterBehaviour characterBehaviour;
         public TeamSelection teamSelection;
+        private BallController ballController;
         [field: SerializeField] public bool isServingBall { get; set; }
 
         private TEAM team => teamSelection.team;
 
 
+        private ThrowBallData throwBallData => ballController.throwBallData;
+        private Vector2 horizontalPosition => new Vector2(transform.position.x, transform.position.z);
+
+        private Vector2 TargetDirection = Vector2.zero;
         private void Awake()
         {
+            ballController = FindAnyObjectByType<BallController>();
             teamSelection = GetComponent<TeamSelection>();
             characterBehaviour = GetComponent<CharacterBehaviour>();
+
         }
+
+
+
 
         private void Update()
         {
@@ -23,7 +34,17 @@ namespace Game.Character
 
             if (isServingBall) { dive(); return; }
 
-
+            //if (Vector2.Distance(horizontalPosition, throwBallData.horizontalPositon) > 0.4f)
+            //{
+            //    Debug.Log("chama");
+            //    TargetDirection = throwBallData.horizontalPositon - horizontalPosition;
+            //    direction();
+            //}
+            //else
+            //{
+            //    Debug.Log("zera tudo");
+            //    TargetDirection = Vector2.zero;
+            //}
 
 
         }
@@ -45,7 +66,7 @@ namespace Game.Character
 
         public override Vector3 direction()
         {
-            return PlayerInput.direction(team);
+            return TargetDirection;
         }
 
         public override bool dive()
