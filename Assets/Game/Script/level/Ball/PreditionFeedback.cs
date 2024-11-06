@@ -42,6 +42,8 @@ namespace Game.Ball
         private void OnHeadedBall(ThrowBallData data)
         {
             SetOpacity(opacityOnHeading);
+            transform.position = data.FinalPositionOffset;
+
         }
 
 

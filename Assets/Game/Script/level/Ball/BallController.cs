@@ -39,7 +39,7 @@ namespace Game.Ball
     public class BallController : MonoBehaviour
     {
         private Rigidbody ballRigidbody;
-        private int headCount = 0;
+        public int headCount = 0;
         public event Action<ThrowBallData> HeadedBall;
         public event Action ballOutField;
         public event Action<TEAM> BallChangeFieldSide;
@@ -150,6 +150,10 @@ namespace Game.Ball
         }
 
 
+        public void ResetHeadCount()
+        {
+            headCount = 0;
+        }
 
         public void UpdateSideBallFell(TEAM teamSide)
         {
@@ -166,8 +170,8 @@ namespace Game.Ball
         private BallState GenerateBallState()
         {
             int yPosition = Random.Range(0, 3);
-            int velocity = Random.Range(0, 2);
-            return new BallState((BallYPosition)yPosition, (BallVelocityMode)velocity);
+            //int velocity = Random.Range(0, 2);
+            return new BallState((BallYPosition)yPosition, 0 /*(BallVelocityMode)velocity*/);
         }
 
     }
