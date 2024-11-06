@@ -12,7 +12,6 @@ namespace Game.CoreLoop
         public event Action<TEAM> turnOver;
         //public event Action ballStopped;
         [SerializeField] private BallController ballController;
-        [SerializeField] private float minBallSpeedLimit;
         [SerializeField] private ScoreRules scoreRules;
         public TEAM TeamTurn => teamTurn;
         private void Awake()

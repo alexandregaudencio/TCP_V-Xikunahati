@@ -23,7 +23,7 @@ namespace Game.Ball
             materialPropertyBlock = new MaterialPropertyBlock();
             meshRenderer = GetComponent<MeshRenderer>();
             meshRenderer.GetPropertyBlock(materialPropertyBlock);
-            color = meshRenderer.material.GetColor(colorID);
+            color = meshRenderer.sharedMaterial.GetColor(colorID);
         }
 
         private void OnEnable()

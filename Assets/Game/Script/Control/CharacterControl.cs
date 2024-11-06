@@ -9,8 +9,8 @@ namespace Game.Character
         [HideInInspector] public Vector3 initialForward;
         private TeamSelection teamSelection;
         [SerializeField] private MeshRenderer feedback;
-        private PlayerControl playerControl;
-        private AIControl aiControl;
+        [SerializeField] PlayerControl playerControl;
+        [SerializeField] private AIControl aiControl;
         public Control control;
         private CharacterBehaviour behaviour;
         private CharacterAnimation anim;

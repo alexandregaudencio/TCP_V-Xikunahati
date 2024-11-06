@@ -65,21 +65,20 @@ namespace Game
         {
             TransitionToState(nextGameState);
         }
-#if UNITY_EDITOR
-        #region para fins de desenvolvimento
+
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F1)) ReloadScene();
-            //if (Input.GetKeyDown(KeyCode.F2)) TransitionToState(GameState.GAMEPLAY);
-            //if (Input.GetKeyDown(KeyCode.F3)) TransitionToState(GameState.ENDGAME);
+            if (Input.GetKeyDown(KeyCode.Alpha1)) TransitionToState(GameState.STARTUP);
+            if (Input.GetKeyDown(KeyCode.Alpha2)) TransitionToState(GameState.GAMEPLAY);
+            if (Input.GetKeyDown(KeyCode.Alpha3)) TransitionToState(GameState.ENDGAME);
         }
-        #endregion
 
         public void ReloadScene()
         {
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync(1);
         }
-#endif
     }
 
 }
