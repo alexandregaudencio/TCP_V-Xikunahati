@@ -22,13 +22,13 @@ namespace Game.Ball
 
         public Vector3 ballPositionYOffset()
         {
-            Vector3 characterForward = CharacterControl.transform.forward;
+            Vector3 characterForward = (CharacterControl != null) ? CharacterControl.initialForward : Vector3.zero;
             if (BallState.yPosition == BallYPosition.DOWN) return characterForward * 5;
             if (BallState.yPosition == BallYPosition.MIDDLE) return Vector3.up * 4;
-            return Vector3.up * 8 + characterForward;
+            return Vector3.up * 7 + characterForward;
         }
 
-        public Vector2 horizontalPositon => new Vector2(FinalPositionOffset.x, FinalPositionOffset.z);
+        public Vector2 horizontalPositon => new Vector3(FinalPositionOffset.x, characterPosition.y, FinalPositionOffset.z);
         public ThrowBallData(BallState ballState, CharacterControl characterControl, TEAM targetTeam)
         {
 

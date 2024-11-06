@@ -1,12 +1,12 @@
 using Game.AudioControl;
 using Game.CoreLoop;
-using Team;
 using UnityEngine;
 
 namespace Game.Character
 {
     public class CharacterControl : MonoBehaviour
     {
+        [HideInInspector] public Vector3 initialForward;
         private TeamSelection teamSelection;
         [SerializeField] private MeshRenderer feedback;
         private PlayerControl playerControl;
@@ -41,6 +41,10 @@ namespace Game.Character
             SetControl(aiControl);
         }
 
+        private void Start()
+        {
+            initialForward = transform.forward;
+        }
 
         //subscribed on Serve coreloop state enter/start
         public void ConfigServing()
