@@ -15,13 +15,16 @@ namespace Game.CoreLoop
         [SerializeField] private float minBallSpeedLimit;
         [SerializeField] private ScoreRules scoreRules;
         public TEAM TeamTurn => teamTurn;
-
-        private void Start()
+        private void Awake()
+        {
+            scoreRules = FindAnyObjectByType<ScoreRules>();
+        }
+        private void OnEnable()
         {
             scoreRules.point += turnOver;
             ballController.BallChangeFieldSide += UpdateTeamTurn;
         }
-        private void OnDestroy()
+        private void OnDisable()
         {
             scoreRules.point -= turnOver;
             ballController.BallChangeFieldSide -= UpdateTeamTurn;

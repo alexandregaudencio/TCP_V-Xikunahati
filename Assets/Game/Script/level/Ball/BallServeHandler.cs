@@ -17,6 +17,7 @@ namespace Game.Ball
         {
             ballRigidbody = GetComponent<Rigidbody>();
             ballTrail = GetComponentInChildren<TrailRenderer>();
+            scoreRules = FindAnyObjectByType<ScoreRules>();
         }
 
 

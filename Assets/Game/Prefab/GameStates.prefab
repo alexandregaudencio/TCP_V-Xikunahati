@@ -2961,14 +2961,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rolling ball
       objectReference: {fileID: 0}
-    - target: {fileID: 2051085692176469438, guid: 1c8146498f105c04c95e8966db173339, type: 3}
-      propertyPath: scoreRules
-      value: 
-      objectReference: {fileID: 6134552686126806582}
-    - target: {fileID: 2051085692176469438, guid: 1c8146498f105c04c95e8966db173339, type: 3}
-      propertyPath: minBallSpeedLimit
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3399700240972122249, guid: 1c8146498f105c04c95e8966db173339, type: 3}
       propertyPath: m_Name
       value: CoreLoopState
@@ -3224,7 +3216,7 @@ PrefabInstance:
     - target: {fileID: 5294008187991417444, guid: 1c8146498f105c04c95e8966db173339, type: 3}
       propertyPath: scoreRules
       value: 
-      objectReference: {fileID: 6134552686126806582}
+      objectReference: {fileID: 0}
     - target: {fileID: 5855398420697016118, guid: 1c8146498f105c04c95e8966db173339, type: 3}
       propertyPath: m_Name
       value: Serve
@@ -3252,6 +3244,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7659642740459279501, guid: 1c8146498f105c04c95e8966db173339, type: 3}
     - {fileID: 5294008187991417444, guid: 1c8146498f105c04c95e8966db173339, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1c8146498f105c04c95e8966db173339, type: 3}
 --- !u!224 &454065379118746029 stripped
 RectTransform:
@@ -3273,33 +3266,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3802648360750398137, guid: 1c8146498f105c04c95e8966db173339, type: 3}
   m_PrefabInstance: {fileID: 8718149223096928511}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6134552686126806582 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3305459252772732617, guid: 1c8146498f105c04c95e8966db173339, type: 3}
-  m_PrefabInstance: {fileID: 8718149223096928511}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074360896896838476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975a48bea29f950408552a953698634d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6328472116593049718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3399700240972122249, guid: 1c8146498f105c04c95e8966db173339, type: 3}
   m_PrefabInstance: {fileID: 8718149223096928511}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7245162700573689153 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2051085692176469438, guid: 1c8146498f105c04c95e8966db173339, type: 3}
-  m_PrefabInstance: {fileID: 8718149223096928511}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074360896896838476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b4eb63757931641a9d2105c07771a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7979232732571348434 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1605246723727287597, guid: 1c8146498f105c04c95e8966db173339, type: 3}
@@ -3334,4 +3305,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervalInSeconds: 3
-  teamTurnHandler: {fileID: 7245162700573689153}
+  teamTurnHandler: {fileID: 0}

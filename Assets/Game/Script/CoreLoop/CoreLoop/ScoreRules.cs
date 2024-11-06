@@ -17,13 +17,20 @@ namespace Game.CoreLoop
         public TEAM LastTeamMarkedPoint => lastTeamMarkedPoint;
         private void OnEnable()
         {
+
+            redScore.ResetScore();
+            blueScore.ResetScore();
             ballController.ballOutField += MarkPoint;
+            teamTurnHandler.turnOver += ApplyScore;
             ballController.ballContactBodyTeam += OnBallContactBodyTeam;
 
         }
 
         private void OnDisable()
         {
+            redScore.ResetScore();
+            blueScore.ResetScore();
+            teamTurnHandler.turnOver -= ApplyScore;
             ballController.ballOutField -= MarkPoint;
             ballController.ballContactBodyTeam -= OnBallContactBodyTeam;
 
@@ -51,28 +58,12 @@ namespace Game.CoreLoop
         public void OnBallContactBodyTeam(TEAM team)
         {
             TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
-            point?.Invoke(teamScored);
-            lastTeamMarkedPoint = teamScored;
+            MarkPoint();
+            //point?.Invoke(teamScored);
+            //lastTeamMarkedPoint = teamScored;
 
         }
 
-
-
-        private void Start()
-        {
-            redScore.ResetScore();
-            blueScore.ResetScore();
-            teamTurnHandler.turnOver += ApplyScore;
-        }
-
-
-
-        private void OnDestroy()
-        {
-            redScore.ResetScore();
-            blueScore.ResetScore();
-            teamTurnHandler.turnOver -= ApplyScore;
-        }
 
         private void ApplyScore(TEAM team)
         {
