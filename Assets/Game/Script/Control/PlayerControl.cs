@@ -26,6 +26,16 @@ namespace Game.Character
         }
 
 
+        private void OnGUI()
+        {
+            var rect = new Rect(200 + 200 * (int)teamSelection.team, 100, 200, 200);
+            GUILayout.BeginVertical();
+            GUILayout.Label(direction().ToString());
+            GUILayout.Label(xAxis().ToString());
+            GUILayout.Label(yAxis().ToString());
+            GUILayout.EndVertical();
+
+        }
 
 
         private void Update()

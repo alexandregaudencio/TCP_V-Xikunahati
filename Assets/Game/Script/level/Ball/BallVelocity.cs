@@ -12,7 +12,8 @@ namespace Game.Ball
 
         public Vector2 VelocityRange = new Vector2(0.5f, 2);
         [SerializeField] private float velocityForce;
-
+        public event Action<Rigidbody> VelocityChange = delegate { }
+        ;
         private void Awake()
         {
             ballController = GetComponent<BallController>();
@@ -38,6 +39,7 @@ namespace Game.Ball
             Vector3 velocity = ParabolicVelocity(transform.position, data.FinalPositionOffset, parabolicTime);
             velocityForce = parabolicTime;
             ballRigidbody.velocity = velocity;
+            VelocityChange?.Invoke(ballRigidbody);
         }
 
 
