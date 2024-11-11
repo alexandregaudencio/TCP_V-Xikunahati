@@ -23,11 +23,12 @@ namespace Game.Ball
         private void Awake()
         {
             lineRenderer = GetComponent<LineRenderer>();
+
         }
 
         private void Start()
         {
-            SetTrajectoryVisible(true);
+            SetTrajectoryVisible(false);
         }
 
         public void PredictTrajectory(Rigidbody rigidbody)
@@ -52,7 +53,7 @@ namespace Game.Ball
                 if (i > 5)
                 {
                     //When hitting a surface we want to show the surface marker and stop updating our line
-                    if (Physics.Raycast(position, velocity.normalized, out RaycastHit hit, overlap))
+                    if (Physics.Raycast(position, velocity.normalized, out RaycastHit hit, overlap, targetLayer))
                     {
                         UpdateLineRender(i, (i - 1, hit.point));
                         MoveHitMarker(hit);

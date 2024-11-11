@@ -30,6 +30,7 @@ namespace Game.Ball
 
         private void OnVelocityUpdate(Rigidbody rigidbody)
         {
+
             trajectoryPredictor.PredictTrajectory(rigidbody);
         }
 
