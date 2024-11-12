@@ -12,7 +12,6 @@ namespace Game.Character
 
         private TEAM team => teamSelection.team;
 
-
         private ThrowBallData throwBallData => ballController.throwBallData;
         private Vector2 horizontalPosition => new Vector2(transform.position.x, transform.position.z);
 
@@ -26,23 +25,21 @@ namespace Game.Character
         }
 
 
-        private void OnGUI()
-        {
-            var rect = new Rect(200 + 200 * (int)teamSelection.team, 100, 200, 200);
-            GUILayout.BeginVertical();
-            GUILayout.Label(direction().ToString());
-            GUILayout.Label(xAxis().ToString());
-            GUILayout.Label(yAxis().ToString());
-            GUILayout.EndVertical();
-
-        }
-
-
         private void Update()
         {
             //GetComponent<PlayerStateMachine>().TransitionToState(GetComponent<PlayerStateMachine>().StateInstances.movingState);
 
-            if (isServingBall) { dive(); return; }
+            if (isServingBall)
+            {
+                dive();
+                return;
+            }
+            else
+            {
+                TargetDirection = new Vector2(0, -team.xAxis());
+
+            }
+
 
             //if (Vector2.Distance(horizontalPosition, throwBallData.horizontalPositon) > 0.4f)
             //{
@@ -76,7 +73,7 @@ namespace Game.Character
 
         public override Vector3 direction()
         {
-            return TargetDirection;
+            return new Vector3(TargetDirection.x, 0, TargetDirection.y);
         }
 
         public override bool dive()

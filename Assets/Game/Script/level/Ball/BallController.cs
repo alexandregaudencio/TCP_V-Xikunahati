@@ -3,6 +3,7 @@ using Game.Character;
 using Game.CoreLoop;
 using System;
 using System.Collections;
+using Unity.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -52,7 +53,9 @@ namespace Game.Ball
         public TEAM LastTeamHead => lastTeamHead;
         private TEAM lastSideBallFell;
         public TEAM LastSideBallFell => lastSideBallFell;
-        public ThrowBallData throwBallData;
+        [Tooltip("Indica o acréscimo no eixo Z na movimentação que bola fará durante o movimento em parábola.")]
+        public float zMaxOffset = 2;
+        [ReadOnly] public ThrowBallData throwBallData;
 
         private RandomAudioPlay randomAudioPlay;
 
@@ -88,10 +91,6 @@ namespace Game.Ball
             }
 
         }
-
-
-
-
 
         private void OnTriggerExit(Collider other)
         {
@@ -164,15 +163,21 @@ namespace Game.Ball
         {
             TEAM targetTeam = (TEAM)(((int)LastTeamHead + 1) % 2);
             CharacterControl character = PlayerControlHandler.Instance.GetRandomCharacter(targetTeam);
-            return new ThrowBallData(GenerateBallState(), character, targetTeam);
+            return new ThrowBallData(GenerateBallState(), character, targetTeam, zMaxOffset);
         }
 
         private BallState GenerateBallState()
         {
             int yPosition = Random.Range(0, 3);
             //int velocity = Random.Range(0, 2);
-            return new BallState((BallYPosition)yPosition, 0 /*(BallVelocityMode)velocity*/);
+            return new BallState(GetBallYPosition(), 0 /*(BallVelocityMode)velocity*/);
         }
+
+        private BallYPosition GetBallYPosition()
+        {
+            return (BallYPosition)MathF.Ceiling(lastTeamHead.yAxis() + 1);
+        }
+
 
     }
 

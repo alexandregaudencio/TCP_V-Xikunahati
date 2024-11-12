@@ -14,10 +14,11 @@ namespace Game.Ball
         public CharacterControl CharacterControl;
 
         public Vector3 characterPosition;
-        public Vector3 randomPositionOffset;
-        public Vector3 HorizontalPosition => new Vector3(FinalPositionOffset.x, CharacterControl.transform.position.y, FinalPositionOffset.z);
-        public Vector3 FinalPositionOffset => characterPosition + ballPositionYOffset(); /*+ randomPositionOffset*/
+        public float zMaxOffset;
+        public Vector3 HorizontalPosition => new Vector3(FinalPositionOffset.x, CharacterControl.transform.position.y, FinalPositionOffset.z) + Vector3.forward * zMaxOffset;
+        public Vector2 horizontalPositon => new Vector3(FinalPositionOffset.x, characterPosition.y, FinalPositionOffset.z) + Vector3.forward * zMaxOffset;
 
+        public Vector3 FinalPositionOffset => characterPosition + ballPositionYOffset() + Vector3.forward * zMaxOffset;
         public TEAM TargetTeam;
 
         public Vector3 ballPositionYOffset()
@@ -28,21 +29,14 @@ namespace Game.Ball
             return Vector3.up * 7 + characterForward;
         }
 
-        public Vector2 horizontalPositon => new Vector3(FinalPositionOffset.x, characterPosition.y, FinalPositionOffset.z);
-        public ThrowBallData(BallState ballState, CharacterControl characterControl, TEAM targetTeam)
+        public ThrowBallData(BallState ballState, CharacterControl characterControl, TEAM targetTeam, float zMaxOffset)
         {
 
             BallState = ballState;
             CharacterControl = characterControl;
             this.TargetTeam = targetTeam;
             characterPosition = characterControl.transform.position;
-
-
-            randomPositionOffset = new Vector3(
-                    Random.Range(horizontalRandomRange, horizontalRandomRange),
-                    0,
-                    Random.Range(-horizontalRandomRange, horizontalRandomRange)
-                    );
+            this.zMaxOffset = Random.Range(-zMaxOffset, zMaxOffset);
 
 
 

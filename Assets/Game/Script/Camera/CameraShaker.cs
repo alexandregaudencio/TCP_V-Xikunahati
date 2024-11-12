@@ -28,6 +28,7 @@ namespace Game.Camera
         private void Start()
         {
             Instance = this;
+            ResetShake();
         }
         public void ApplyShake(shakeData skakeData)
         {
@@ -48,6 +49,10 @@ namespace Game.Camera
             DOTween.To(x => multiChannelPerlin.m_AmplitudeGain = x, intensity, 0f, tweenDuration);
         }
 
+        private void ResetShake()
+        {
+            multiChannelPerlin.m_AmplitudeGain = 0;
+        }
 
 
 

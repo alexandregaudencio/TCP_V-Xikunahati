@@ -7,7 +7,7 @@ namespace Game.Ball
     {
         private BallController ballController;
         [SerializeField] private float initialVelocity = 2;
-        [SerializeField, Range(0.01f, 1)] private float speedTimeMultiplier = 0.1f;
+        [SerializeField, Range(0.01f, 0.1f)] private float speedTimeMultiplier = 0.1f;
         private Rigidbody ballRigidbody;
 
         public Vector2 VelocityRange = new Vector2(0.5f, 2);
