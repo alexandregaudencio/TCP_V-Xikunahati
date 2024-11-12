@@ -12,6 +12,7 @@ namespace Game.Character
         public static PlayerControlHandler Instance;
 
         private bool inputEnabled;
+        public CharacterControl[] GetCharacters(TEAM team) => characters[team];
 
         private void Awake()
         {

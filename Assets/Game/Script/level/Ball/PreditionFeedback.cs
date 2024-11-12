@@ -16,12 +16,16 @@ namespace Game.Ball
         private MeshRenderer meshRenderer;
         MaterialPropertyBlock materialPropertyBlock;
 
+        private ThrowBallData ThrowBallData;
+
+        [SerializeField] private float nearDistance = 1;
+        private bool BallIsNear => Vector3.Distance(transform.position, ballController.transform.position) < nearDistance;
 
         private void Awake()
         {
             ballController = FindAnyObjectByType<BallController>();
-            materialPropertyBlock = new MaterialPropertyBlock();
             meshRenderer = GetComponent<MeshRenderer>();
+            materialPropertyBlock = new MaterialPropertyBlock();
             meshRenderer.GetPropertyBlock(materialPropertyBlock);
             color = meshRenderer.sharedMaterial.GetColor(colorID);
         }
@@ -43,9 +47,16 @@ namespace Game.Ball
         {
             SetOpacity(opacityOnHeading);
             transform.position = data.FinalPositionOffset;
+            ThrowBallData = data;
 
         }
 
+        private void OnDrawGizmos()
+        {
+            if (ballController == null) ballController = FindAnyObjectByType<BallController>();
+            Gizmos.color = BallIsNear ? Color.blue : Color.red;
+            Gizmos.DrawLine(transform.position, ballController.transform.position);
+        }
 
         public void SetOpacity(float opacity)
         {

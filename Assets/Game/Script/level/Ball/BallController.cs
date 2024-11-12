@@ -3,7 +3,6 @@ using Game.Character;
 using Game.CoreLoop;
 using System;
 using System.Collections;
-using Unity.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -55,7 +54,7 @@ namespace Game.Ball
         public TEAM LastSideBallFell => lastSideBallFell;
         [Tooltip("Indica o acréscimo no eixo Z na movimentação que bola fará durante o movimento em parábola.")]
         public float zMaxOffset = 2;
-        [ReadOnly] public ThrowBallData throwBallData;
+        public ThrowBallData throwBallData;
 
         private RandomAudioPlay randomAudioPlay;
 

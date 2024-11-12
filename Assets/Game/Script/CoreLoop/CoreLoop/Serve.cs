@@ -1,4 +1,5 @@
 using Game.Ball;
+using Game.Character;
 using Game.Level;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Game.CoreLoop
 {
     public class Serve : MonoBehaviour
     {
+        [SerializeField] private ServerPositions serverPositions;
+        [SerializeField] private PlayerControlHandler playerControlHandler;
         [SerializeField] private BallController ballController;
         private PriorityControl[] priorityControls;
 
@@ -31,10 +34,25 @@ namespace Game.CoreLoop
 
         public void SetCharactersServePosition()
         {
-            foreach (PriorityControl priorityControl in priorityControls)
+
+            foreach (CharacterControl cc in playerControlHandler.GetCharacters(TEAM.Red))
             {
-                priorityControl.SetInitialPosition();
+                var servePosition = serverPositions.GetSevePosition(cc);
+                cc.transform.position = servePosition.position;
             }
+
+            foreach (CharacterControl cc in playerControlHandler.GetCharacters(TEAM.Blue))
+            {
+                var servePosition = serverPositions.GetSevePosition(cc);
+                cc.transform.position = servePosition.position;
+            }
+
+
+
+            //foreach (PriorityControl priorityControl in priorityControls)
+            //{
+            //    priorityControl.SetInitialPosition();
+            //}
         }
 
 
