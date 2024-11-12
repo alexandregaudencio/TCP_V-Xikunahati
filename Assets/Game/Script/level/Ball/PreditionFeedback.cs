@@ -19,7 +19,16 @@ namespace Game.Ball
         private ThrowBallData ThrowBallData;
 
         [SerializeField] private float nearDistance = 1;
+        [SerializeField] private float startDistanceToFadeIn = 4;
+
+        [Header("Scale Effect props")]
+        [SerializeField] private AnimationCurve animationCurve;
+        [SerializeField, Min(1)] private float scaleOffset = 2;
         private bool BallIsNear => Vector3.Distance(transform.position, ballController.transform.position) < nearDistance;
+
+        private float headedBallStartDistance;
+        private float distanceToBall => Vector3.Distance(transform.position, ballController.transform.position);
+        private float PercentagemDistanceToBallStartPosition => (distanceToBall / headedBallStartDistance);
 
         private void Awake()
         {
@@ -43,11 +52,13 @@ namespace Game.Ball
 
         }
 
+
         private void OnHeadedBall(ThrowBallData data)
         {
             SetOpacity(opacityOnHeading);
             transform.position = data.FinalPositionOffset;
             ThrowBallData = data;
+            headedBallStartDistance = Vector3.Distance(transform.position, ballController.transform.position);
 
         }
 
@@ -96,8 +107,17 @@ namespace Game.Ball
         //    }
         //}
 
+        private void ApplyDistanceEffect()
+        {
+            float animationTimeEvaluted = animationCurve.Evaluate(PercentagemDistanceToBallStartPosition);
+            transform.localScale = Vector3.one * (3 + animationTimeEvaluted * scaleOffset);
+            SetOpacity(1 - animationTimeEvaluted / 1.2f);
+        }
+
+
         private void LateUpdate()
         {
+            ApplyDistanceEffect();
             transform.forward = targetCameraTransform.forward;
             //Vector2 direction = targetCameraTransform.position - transform.position;
             //transform.LookAt(direction);

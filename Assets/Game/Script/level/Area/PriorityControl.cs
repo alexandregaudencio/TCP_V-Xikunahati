@@ -8,6 +8,7 @@ namespace Game.Level
     {
         [SerializeField] private Transform centerPointTransform;
 
+
         public TeamSelection recipient;
         private GameObject targetCharacter => recipient?.gameObject;
         public Vector2 initialPosition => new Vector3(transform.position.x, transform.position.z);
