@@ -1,8 +1,11 @@
+using DG.Tweening;
+using System;
 using UnityEngine;
 
 namespace Game.Ball
 {
-    [ExecuteAlways]
+
+
     public class PreditionFeedback : MonoBehaviour
     {
         [Range(0, 1)] public float opacityOnHeading = 0.5f;
@@ -18,14 +21,27 @@ namespace Game.Ball
 
         private ThrowBallData ThrowBallData;
 
-        [SerializeField] private float nearDistance = 1;
+        [SerializeField] private float nearDistance = 2;
         [SerializeField] private float startDistanceToFadeIn = 4;
 
         [Header("Scale Effect props")]
         [SerializeField] private AnimationCurve animationCurve;
         [SerializeField, Min(1)] private float scaleOffset = 2;
-        private bool BallIsNear => Vector3.Distance(transform.position, ballController.transform.position) < nearDistance;
 
+        public Action<bool> ProximityChange = delegate { };
+        private bool ballIsNear = false;
+        public bool BallIsNear
+        {
+            get => ballIsNear;
+            set
+            {
+                if (ballIsNear != value)
+                {
+                    ballIsNear = value;
+                    ProximityChange?.Invoke(ballIsNear);
+                }
+            }
+        }
         private float headedBallStartDistance;
         private float distanceToBall => Vector3.Distance(transform.position, ballController.transform.position);
         private float PercentagemDistanceToBallStartPosition => (distanceToBall / headedBallStartDistance);
@@ -37,21 +53,34 @@ namespace Game.Ball
             materialPropertyBlock = new MaterialPropertyBlock();
             meshRenderer.GetPropertyBlock(materialPropertyBlock);
             color = meshRenderer.sharedMaterial.GetColor(colorID);
+            Time.timeScale = 1;
         }
 
         private void OnEnable()
         {
             ballController.HeadedBall += OnHeadedBall;
+            ProximityChange += OnBallProximityChange;
         }
-
-
 
         private void OnDisable()
         {
             ballController.HeadedBall -= OnHeadedBall;
+            ProximityChange -= OnBallProximityChange;
 
         }
 
+
+        private void OnBallProximityChange(bool value)
+        {
+            float timeScale = value ? 0.4f : 1;
+            TimeScaleHandler.SetTimeScale(timeScale, 0.3f, Ease.OutQuad);
+        }
+
+
+        private void FixedUpdate()
+        {
+            BallIsNear = Vector3.Distance(transform.position, ballController.transform.position) < nearDistance;
+        }
 
         private void OnHeadedBall(ThrowBallData data)
         {

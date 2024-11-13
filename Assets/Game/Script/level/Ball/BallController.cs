@@ -38,7 +38,6 @@ namespace Game.Ball
 
     public class BallController : MonoBehaviour
     {
-        private Rigidbody ballRigidbody;
         public int headCount = 0;
         public event Action<ThrowBallData> HeadedBall;
         public event Action ballOutField;
@@ -60,7 +59,6 @@ namespace Game.Ball
 
         private void Awake()
         {
-            ballRigidbody = GetComponent<Rigidbody>();
             randomAudioPlay = GetComponent<RandomAudioPlay>();
         }
 
