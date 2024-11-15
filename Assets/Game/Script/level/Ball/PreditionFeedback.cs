@@ -72,8 +72,8 @@ namespace Game.Ball
 
         private void OnBallProximityChange(bool value)
         {
-            float timeScale = value ? 0.4f : 1;
-            TimeScaleHandler.SetTimeScale(timeScale, 0.3f, Ease.OutQuad);
+            float timeScale = value ? 0.3f : 1;
+            TimeScaleHandler.SetTimeScale(timeScale, 0.2f, Ease.OutQuad);
         }
 
 

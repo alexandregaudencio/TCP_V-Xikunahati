@@ -1244,6 +1244,10 @@ PrefabInstance:
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 153058246}
+    - target: {fileID: 2178057855896482882, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3088600122750358273, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -2208,6 +2212,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ae4253f7540734e4f8a950eee81b558b, type: 2}
+    - target: {fileID: 2178057855896482882, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2471315172141189057, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
       propertyPath: m_RotationAtRest.x
       value: 24.999996
@@ -7069,6 +7077,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ae4253f7540734e4f8a950eee81b558b, type: 2}
+    - target: {fileID: 2178057855896482882, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2183807782798082189, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 29.515093
@@ -22759,6 +22771,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 13.941429
       objectReference: {fileID: 0}
+    - target: {fileID: 3740696854312497355, guid: 5dda6a9bd28a73445889c9d36b65b4b3, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3783042339462667606, guid: 5dda6a9bd28a73445889c9d36b65b4b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 6.179581
@@ -30972,6 +30988,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1950532067957904278, guid: 5dda6a9bd28a73445889c9d36b65b4b3, type: 3}
       propertyPath: maxIntervalToChangeBehaviour
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740696854312497355, guid: 5dda6a9bd28a73445889c9d36b65b4b3, type: 3}
+      propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4054903256400684517, guid: 5dda6a9bd28a73445889c9d36b65b4b3, type: 3}
