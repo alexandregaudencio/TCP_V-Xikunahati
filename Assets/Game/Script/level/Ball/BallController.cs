@@ -56,6 +56,7 @@ namespace Game.Ball
         public ThrowBallData throwBallData;
 
         private RandomAudioPlay randomAudioPlay;
+        public TEAM ballInsideHeadTeam { get; set; }
 
         private void Awake()
         {
@@ -114,15 +115,31 @@ namespace Game.Ball
             if (other.CompareTag("Head"))
             {
                 if (CoreLoopController.Instance.CurrentState != CoreLoopState.SERVE) return;
-                lastTeamHead = teamTurnHandler.TeamTurn;
-                headCount++;
-                throwBallData = GenerateThrowBallData();
-                HeadedBall?.Invoke(throwBallData);
-                randomAudioPlay.PlayRandomClip(SOUND_KEY.head, 0);
+                HeadingBall();
 
             }
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (CoreLoopController.Instance.CurrentState == CoreLoopState.SERVE) return;
+
+            if (!other.CompareTag("Head")) return;
+            TEAM teamTurn = teamTurnHandler.TeamTurn;
+            if (InputBuffer.Instance.TeamHeadInputBuffered(teamTurn))
+            {
+                HeadingBall();
+            }
+        }
+
+        private void HeadingBall()
+        {
+            lastTeamHead = teamTurnHandler.TeamTurn;
+            headCount++;
+            throwBallData = GenerateThrowBallData();
+            HeadedBall?.Invoke(throwBallData);
+            randomAudioPlay.PlayRandomClip(SOUND_KEY.head, 0);
+        }
 
         private void OnDrawGizmos()
         {
