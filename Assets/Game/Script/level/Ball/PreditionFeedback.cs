@@ -42,7 +42,7 @@ namespace Game.Ball
                 }
             }
         }
-        private float headedBallStartDistance;
+        private float headedBallStartDistance = 1;
         private float distanceToBall => Vector3.Distance(transform.position, ballController.transform.position);
         private float PercentagemDistanceToBallStartPosition => (distanceToBall / headedBallStartDistance);
 

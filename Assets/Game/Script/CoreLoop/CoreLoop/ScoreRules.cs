@@ -35,31 +35,31 @@ namespace Game.CoreLoop
             ballController.ballContactBodyTeam -= OnBallContactBodyTeam;
 
         }
-        private TEAM GetTeamPointed()
-        {
-            if (ballController.LastTeamHead != ballController.LastSideBallFell)
-            {
-                return ballController.LastTeamHead;
-            }
-            else
-            {
-                return (ballController.LastTeamHead == TEAM.Blue) ? TEAM.Red : TEAM.Blue;
-            }
+        //private TEAM GetTeamPointed()
+        //{
+        //    if (ballController.LastTeamHead != ballController.LastSideBallFell)
+        //    {
+        //        return ballController.LastTeamHead;
+        //    }
+        //    else
+        //    {
+        //        return (ballController.LastTeamHead == TEAM.Blue) ? TEAM.Red : TEAM.Blue;
+        //    }
 
-        }
+        //}
 
-        public void MarkPoint()
+        public void MarkPoint(TEAM team)
         {
-            Debug.Log("mark point");
-            point?.Invoke(GetTeamPointed());
-            lastTeamMarkedPoint = GetTeamPointed();
+            Debug.Log("mark point: " + team);
+            point?.Invoke(team);
+            lastTeamMarkedPoint = team;
 
         }
 
         public void OnBallContactBodyTeam(TEAM team)
         {
             TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
-            MarkPoint();
+            MarkPoint(teamScored);
             //point?.Invoke(teamScored);
             //lastTeamMarkedPoint = teamScored;
 

@@ -21,13 +21,11 @@ namespace Game
         public void StateStart()
         {
             onStateStart?.Invoke();
-            Show();
         }
 
         public void StateEnd()
         {
             onStateEnd?.Invoke();
-            Hide();
         }
 
     }

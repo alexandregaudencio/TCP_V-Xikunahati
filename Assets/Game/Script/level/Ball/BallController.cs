@@ -40,7 +40,7 @@ namespace Game.Ball
     {
         public int headCount = 0;
         public event Action<ThrowBallData> HeadedBall;
-        public event Action ballOutField;
+        public event Action<TEAM> ballOutField;
         public event Action<TEAM> BallChangeFieldSide;
         public event Action<TEAM> ballTouchFieldSide;
         public int ballTouchFieldSideCount = 0;
@@ -82,6 +82,8 @@ namespace Game.Ball
             if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
             {
                 TeamSelection contactBodyTeam = collision.gameObject.GetComponent<TeamSelection>();
+                Debug.Log("contact: " + contactBodyTeam.team);
+                if (CoreLoopController.Instance.CurrentState != CoreLoopState.ROLLING_BALL) return;
                 ballContactBodyTeam?.Invoke(contactBodyTeam.team);
 
                 //collision.gameObject.GetComponent<BodyEffect>()?.DoBallContactEffect();
@@ -93,7 +95,8 @@ namespace Game.Ball
         {
             if (other.CompareTag("FieldRange"))
             {
-                ballOutField?.Invoke();
+                if (CoreLoopController.Instance.CurrentState != CoreLoopState.ROLLING_BALL) return;
+                ballOutField?.Invoke(lastSideBallFell);
             }
         }
 
@@ -108,9 +111,9 @@ namespace Game.Ball
             {
                 ballTouchFieldSide?.Invoke(TEAM.Blue);
             }
-
             if (other.CompareTag("Head"))
             {
+                if (CoreLoopController.Instance.CurrentState != CoreLoopState.SERVE) return;
                 lastTeamHead = teamTurnHandler.TeamTurn;
                 headCount++;
                 throwBallData = GenerateThrowBallData();
@@ -119,6 +122,7 @@ namespace Game.Ball
 
             }
         }
+
 
         private void OnDrawGizmos()
         {

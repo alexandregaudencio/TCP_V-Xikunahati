@@ -10,7 +10,7 @@ namespace Game.CoreLoop
         SCORING
     }
 
-    public class CoreLoopHandler : ViewHandler
+    public class CoreLoopHandler : MonoBehaviour
     {
         [SerializeField] private CoreLoopState state;
         public CoreLoopState State { get => state; }
@@ -18,16 +18,17 @@ namespace Game.CoreLoop
         public UnityEvent onStateStart;
         public UnityEvent onStateEnd;
 
+
         public void StateStart()
         {
+            Debug.Log("starting: " + state.ToString());
             onStateStart?.Invoke();
-            Show();
         }
 
         public void StateEnd()
         {
+            Debug.Log("Ending: " + state.ToString());
             onStateEnd?.Invoke();
-            Hide();
         }
 
     }

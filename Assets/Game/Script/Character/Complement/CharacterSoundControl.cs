@@ -22,7 +22,22 @@ namespace Game.AudioControl
             currentState = characterAnimation.Floor;
             neck = GetComponentInChildren<HeaderControl>();
             detectHead = GetComponentInChildren<DetectHead>();
+            detectHead.BallEnter += OnBallEnter;
         }
+
+        private void OnDestroy()
+        {
+            detectHead.BallEnter -= OnBallEnter;
+
+
+        }
+
+        private void OnBallEnter()
+        {
+            Blow(SOUND_KEY.head);
+
+        }
+
         public void Run(Collision collision)
         {
             if (footSource.canPlay && collision.gameObject.CompareTag("FieldRange"))
@@ -73,11 +88,7 @@ namespace Game.AudioControl
         }
         private void Update()
         {
-            if (detectHead.Detect)
-            {
-                detectHead.Detect = false;
-                Blow(SOUND_KEY.head);
-            }
+
             if (characterAnimation.Floor != currentState && !neck.dive)
             {
                 footSource.audioSource.loop = false;

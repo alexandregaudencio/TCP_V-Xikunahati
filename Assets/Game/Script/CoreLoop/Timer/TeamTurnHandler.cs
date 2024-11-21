@@ -21,18 +21,22 @@ namespace Game.CoreLoop
         private void OnEnable()
         {
             scoreRules.point += turnOver;
-            ballController.BallChangeFieldSide += UpdateTeamTurn;
+            ballController.BallChangeFieldSide += BallChangeFieldSide;
+
         }
         private void OnDisable()
         {
             scoreRules.point -= turnOver;
-            ballController.BallChangeFieldSide -= UpdateTeamTurn;
+            ballController.BallChangeFieldSide -= BallChangeFieldSide;
+
         }
 
-        private void UpdateTeamTurn(TEAM teamTurn)
+        private void BallChangeFieldSide(TEAM teamTurn)
         {
+            Debug.Log("change side: " + teamTurn);
             this.teamTurn = teamTurn;
         }
+
 
 
     }

@@ -27,6 +27,7 @@ namespace Game.CoreLoop
 
         private void OnTurnOver(TEAM teamturn)
         {
+            Debug.Log("turn Over");
             coreLoopController.NextStep();
         }
 

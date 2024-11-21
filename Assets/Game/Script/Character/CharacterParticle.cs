@@ -1,6 +1,3 @@
-using head;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterParticle : MonoBehaviour
@@ -16,13 +13,25 @@ public class CharacterParticle : MonoBehaviour
         dh = GetComponentInChildren<DetectHead>();
     }
 
-    private void Update()
+
+    private void Start()
     {
-        if (dh.Detect)
-        {
-            Head();
-        }
+        dh.BallEnter += OnBallEnter;
+
     }
+
+    private void OnDestroy()
+    {
+        dh.BallEnter -= OnBallEnter;
+
+    }
+
+    private void OnBallEnter()
+    {
+        Head();
+
+    }
+
     public void Jumping()
     {
         run.Stop();

@@ -7,7 +7,8 @@ namespace Game.CoreLoop
     {
         [SerializeField] private CoreLoopHandler[] coreLoopHandlers;
         [SerializeField] private CoreLoopHandler currentState;
-
+        public event Action<CoreLoopState> StateChanged;
+        public CoreLoopState CurrentState => currentState.State;
         public CoreLoopState nextCoreLoopState
         {
             get
@@ -22,11 +23,19 @@ namespace Game.CoreLoop
             }
         }
 
+        public static CoreLoopController Instance;
+
+        public void Start()
+        {
+            Instance = this;
+        }
+
         public void TransitionToState(CoreLoopState state)
         {
             currentState.StateEnd();
             currentState = GetHandler(state);
             currentState.StateStart();
+            StateChanged?.Invoke(currentState.State);
         }
 
         private CoreLoopHandler GetHandler(CoreLoopState state)
@@ -42,10 +51,7 @@ namespace Game.CoreLoop
 
         public void Restart()
         {
-            foreach (CoreLoopHandler handler in coreLoopHandlers)
-            {
-                handler.Hide();
-            }
+
             TransitionToState(CoreLoopState.SERVE);
 
         }
