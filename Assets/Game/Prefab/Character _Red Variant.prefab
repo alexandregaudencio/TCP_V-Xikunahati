@@ -387,6 +387,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.589368
       objectReference: {fileID: 0}
+    - target: {fileID: 3004743490460476797, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Volume
+      value: 0.821
+      objectReference: {fileID: 0}
     - target: {fileID: 3084182521204250663, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.38268346
@@ -789,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 60342375db6e71a43ac63c136fc9e105, type: 2}
     - target: {fileID: 7360781085406952751, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_Name
-      value: Character _Red Variant M
+      value: Character _Red Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7360781085406952751, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_TagString

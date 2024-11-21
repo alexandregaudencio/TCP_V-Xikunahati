@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Game.Character;
 using Team;
 using TMPro;
@@ -30,6 +31,8 @@ namespace Game.CoreLoop
         private void ShowScoreText(int score)
         {
             text_TeamScore.SetText(score.ToString());
+            text_TeamScore.transform.localScale = Vector3.one * 2;
+            text_TeamScore.transform.DOScale(1, 1).SetEase(Ease.OutBounce).SetUpdate(true);
         }
 
     }

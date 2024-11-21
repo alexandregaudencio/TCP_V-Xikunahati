@@ -9,7 +9,6 @@ namespace Game.CoreLoop
     public class ScoreRules : MonoBehaviour
     {
         [SerializeField] private BallController ballController;
-        [SerializeField] private TeamTurnHandler teamTurnHandler;
         [SerializeField] private Score redScore;
         [SerializeField] private Score blueScore;
         public event Action<TEAM> point;
@@ -56,7 +55,7 @@ namespace Game.CoreLoop
         public void BallOutField(TEAM team)
         {
             TEAM pointTeam = team == TEAM.Blue ? TEAM.Red : TEAM.Blue;
-            Debug.Log("mark point: " + pointTeam);
+            Debug.Log("Ball outside filed. Point: " + pointTeam);
             lastTeamMarkedPoint = pointTeam;
             point?.Invoke(pointTeam);
 
@@ -79,6 +78,7 @@ namespace Game.CoreLoop
             Debug.Log("applying score");
             if (team == TEAM.Red) redScore.IncreaseScore();
             else blueScore.IncreaseScore();
+            CoreLoopController.Instance.TransitionToState(CoreLoopState.SCORING);
         }
 
     }
