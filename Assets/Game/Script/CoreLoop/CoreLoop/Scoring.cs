@@ -16,14 +16,11 @@ namespace Game.CoreLoop
         }
 
 
-        private void OnEnable()
+
+        public void SkillScoringStateDealyed()
         {
             StartCoroutine(WaitForSkipState());
 
-        }
-        private void OnDisable()
-        {
-            StopCoroutine(WaitForSkipState());
         }
 
 

@@ -49,7 +49,7 @@ namespace Game.Ball
         public float zPosition => transform.position.z;
         private TEAM lastTeamHead;
         public TEAM LastTeamHead => lastTeamHead;
-        private TEAM lastSideBallFell;
+        [SerializeField] private TEAM lastSideBallFell;
         public TEAM LastSideBallFell => lastSideBallFell;
         [Tooltip("Indica o acréscimo no eixo Z na movimentação que bola fará durante o movimento em parábola.")]
         public float zMaxOffset = 2;

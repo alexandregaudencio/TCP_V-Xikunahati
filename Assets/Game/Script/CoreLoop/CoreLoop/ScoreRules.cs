@@ -15,12 +15,17 @@ namespace Game.CoreLoop
         public event Action<TEAM> point;
         private TEAM lastTeamMarkedPoint = TEAM.Blue;
         public TEAM LastTeamMarkedPoint => lastTeamMarkedPoint;
+
+        private void Awake()
+        {
+            ballController = FindObjectOfType<BallController>();
+        }
         private void OnEnable()
         {
 
             redScore.ResetScore();
             blueScore.ResetScore();
-            ballController.ballOutField += MarkPoint;
+            ballController.ballOutField += BallOutField;
             point += ApplyScore;
             ballController.ballContactBodyTeam += OnBallContactBodyTeam;
 
@@ -31,7 +36,7 @@ namespace Game.CoreLoop
             redScore.ResetScore();
             blueScore.ResetScore();
             point -= ApplyScore;
-            ballController.ballOutField -= MarkPoint;
+            ballController.ballOutField -= BallOutField;
             ballController.ballContactBodyTeam -= OnBallContactBodyTeam;
 
         }
@@ -48,18 +53,21 @@ namespace Game.CoreLoop
 
         //}
 
-        public void MarkPoint(TEAM team)
+        public void BallOutField(TEAM team)
         {
-            Debug.Log("mark point: " + team);
-            point?.Invoke(team);
-            lastTeamMarkedPoint = team;
+            TEAM pointTeam = team == TEAM.Blue ? TEAM.Red : TEAM.Blue;
+            Debug.Log("mark point: " + pointTeam);
+            point?.Invoke(pointTeam);
+
+            lastTeamMarkedPoint = pointTeam;
+
 
         }
 
         public void OnBallContactBodyTeam(TEAM team)
         {
             TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
-            MarkPoint(teamScored);
+            BallOutField(teamScored);
             //point?.Invoke(teamScored);
             //lastTeamMarkedPoint = teamScored;
 

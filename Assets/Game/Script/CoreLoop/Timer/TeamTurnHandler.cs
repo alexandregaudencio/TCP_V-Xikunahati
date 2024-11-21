@@ -16,6 +16,7 @@ namespace Game.CoreLoop
         public TEAM TeamTurn => teamTurn;
         private void Awake()
         {
+            ballController = FindObjectOfType<BallController>();
             scoreRules = FindAnyObjectByType<ScoreRules>();
         }
         private void OnEnable()
