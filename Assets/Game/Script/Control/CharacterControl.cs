@@ -25,7 +25,7 @@ namespace Game.Character
         public CharacterSoundControl SoundControl { get => soundControl; set => soundControl = value; }
 
         private TeamTurnHandler TeamTurnHandler;
-
+        private GameObject chaoBatido;
         private void Awake()
         {
             TeamTurnHandler = FindAnyObjectByType<TeamTurnHandler>();
@@ -37,6 +37,7 @@ namespace Game.Character
             soundControl = GetComponent<CharacterSoundControl>();
             playerControl = GetComponent<PlayerControl>();
             aiControl = GetComponent<AIControl>();
+            chaoBatido = GameObject.FindGameObjectWithTag("ChaoBatidoMesh");
 
             SetControl(aiControl);
         }
@@ -44,6 +45,11 @@ namespace Game.Character
         private void Start()
         {
             initialForward = transform.forward;
+        }
+        private void LateUpdate()
+        {
+            //Update heighlighter
+            feedback.transform.position = new Vector3(feedback.transform.position.x, chaoBatido.transform.position.y + 0.2f, feedback.transform.position.z);
         }
 
         //subscribed on Serve coreloop state enter/start

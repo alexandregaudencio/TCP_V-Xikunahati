@@ -14,6 +14,8 @@ namespace Game.Character
         private bool inputEnabled;
         public CharacterControl[] GetCharacters(TEAM team) => characters[team];
 
+        public CharacterControl GetMiddleCharacter(TEAM team) => characters[team][1];
+
         private void Awake()
         {
             ballController = FindObjectOfType<BallController>();

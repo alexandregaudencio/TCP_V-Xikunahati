@@ -14,8 +14,10 @@ namespace Game.CoreLoop
         [SerializeField] private BallController ballController;
         [SerializeField] private ScoreRules scoreRules;
         public TEAM TeamTurn => teamTurn;
+        public static TeamTurnHandler Instance;
         private void Awake()
         {
+            Instance = this;
             ballController = FindObjectOfType<BallController>();
             scoreRules = FindAnyObjectByType<ScoreRules>();
         }

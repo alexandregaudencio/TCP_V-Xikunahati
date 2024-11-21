@@ -57,19 +57,19 @@ namespace Game.CoreLoop
         {
             TEAM pointTeam = team == TEAM.Blue ? TEAM.Red : TEAM.Blue;
             Debug.Log("mark point: " + pointTeam);
+            lastTeamMarkedPoint = pointTeam;
             point?.Invoke(pointTeam);
 
-            lastTeamMarkedPoint = pointTeam;
 
 
         }
 
+
         public void OnBallContactBodyTeam(TEAM team)
         {
             TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
-            BallOutField(teamScored);
-            //point?.Invoke(teamScored);
-            //lastTeamMarkedPoint = teamScored;
+            lastTeamMarkedPoint = teamScored;
+            point?.Invoke(teamScored);
 
         }
 

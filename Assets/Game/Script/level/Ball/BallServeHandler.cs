@@ -1,40 +1,40 @@
-using Game.Character;
 using Game.CoreLoop;
+using Game.Level;
 using UnityEngine;
 
 namespace Game.Ball
 {
     public class BallServeHandler : MonoBehaviour
     {
-        [SerializeField] private MeshCollider MiddleRedArea;
-        [SerializeField] private MeshCollider MiddleBlueArea;
-        [SerializeField] private float yServeOffset;
+        [SerializeField] private Vector2 ServeOffset = new Vector2(5, 1);
         [SerializeField] private ScoreRules scoreRules;
         private Rigidbody ballRigidbody;
         private TrailRenderer ballTrail;
+        private ServerPositions serverPositions;
 
         private void Awake()
         {
             ballRigidbody = GetComponent<Rigidbody>();
             ballTrail = GetComponentInChildren<TrailRenderer>();
             scoreRules = FindAnyObjectByType<ScoreRules>();
+            serverPositions = FindAnyObjectByType<ServerPositions>();
         }
 
 
-        public Vector3 GetSaquePosition(TEAM characterTeam)
-        {
-            Vector3 centerTarget = (characterTeam == TEAM.Blue) ?
-                MiddleBlueArea.sharedMesh.bounds.center :
-                MiddleRedArea.sharedMesh.bounds.center;
-            return centerTarget / 2 + Vector3.up * yServeOffset;
-        }
 
         public void ServeAntecipation()
         {
             ballRigidbody.isKinematic = true;
-            gameObject.transform.position = GetSaquePosition(scoreRules.LastTeamMarkedPoint);
             ballRigidbody.isKinematic = false;
             ballTrail.Clear();
+            SetServePosition();
+        }
+
+        public void SetServePosition()
+        {
+            Transform serveTransform = serverPositions.GetServePosition(TeamTurnHandler.Instance.TeamTurn);
+            transform.position = serveTransform.position - serveTransform.forward * ServeOffset.x + Vector3.up * ServeOffset.y;
+
         }
 
     }

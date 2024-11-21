@@ -16,6 +16,7 @@ TagManager:
   - grass
   - TeamRedSide
   - TeamBlueSide
+  - ChaoBatidoMesh
   layers:
   - Default
   - TransparentFX

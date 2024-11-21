@@ -135,13 +135,16 @@ namespace Game.Ball
         {
             while (true)
             {
-                if (zPosition < 0.00f && teamTurnHandler.TeamTurn != TEAM.Blue)
+                if (CoreLoopController.Instance.CurrentState == CoreLoopState.ROLLING_BALL)
                 {
-                    BallChangeFieldSide?.Invoke(TEAM.Blue);
-                }
-                if (zPosition > 0.00f && teamTurnHandler.TeamTurn != TEAM.Red)
-                {
-                    BallChangeFieldSide?.Invoke(TEAM.Red);
+                    if (zPosition < 0.00f && teamTurnHandler.TeamTurn != TEAM.Blue)
+                    {
+                        BallChangeFieldSide?.Invoke(TEAM.Blue);
+                    }
+                    if (zPosition > 0.00f && teamTurnHandler.TeamTurn != TEAM.Red)
+                    {
+                        BallChangeFieldSide?.Invoke(TEAM.Red);
+                    }
                 }
 
                 yield return new WaitForSeconds(0.1f);
