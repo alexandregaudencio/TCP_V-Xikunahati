@@ -57,6 +57,8 @@ namespace Game.Ball
 
         private RandomAudioPlay randomAudioPlay;
         public TEAM ballInsideHeadTeam { get; set; }
+        public bool hasHittedBall = false;
+
 
         private void Awake()
         {
@@ -99,6 +101,11 @@ namespace Game.Ball
                 if (CoreLoopController.Instance.CurrentState != CoreLoopState.ROLLING_BALL) return;
                 ballOutField?.Invoke(lastSideBallFell);
             }
+            if (other.CompareTag("Head"))
+            {
+                hasHittedBall = false;
+            }
+
         }
 
         private void OnTriggerEnter(Collider other)
@@ -114,7 +121,9 @@ namespace Game.Ball
             }
             if (other.CompareTag("Head"))
             {
+                hasHittedBall = false;
                 if (CoreLoopController.Instance.CurrentState != CoreLoopState.SERVE) return;
+
                 HeadingBall();
 
             }
@@ -125,12 +134,15 @@ namespace Game.Ball
             if (CoreLoopController.Instance.CurrentState == CoreLoopState.SERVE) return;
 
             if (!other.CompareTag("Head")) return;
+            if (hasHittedBall) return;
             TEAM teamTurn = teamTurnHandler.TeamTurn;
             if (InputBuffer.Instance.TeamHeadInputBuffered(teamTurn))
             {
                 HeadingBall();
+                hasHittedBall = true;
             }
         }
+
 
         private void HeadingBall()
         {

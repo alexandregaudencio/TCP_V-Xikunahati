@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Game.Character
         private float startTime;
         public float timeRelease;
         public bool inputBuffered => timeRelease > 0;
-
+        public event Action StartTime = delegate { };
         public TeamBuffer(TEAM team, float startTime)
         {
             this.team = team;
@@ -20,6 +21,7 @@ namespace Game.Character
         public void RestartBuffer()
         {
             timeRelease = startTime;
+            StartTime?.Invoke();
         }
 
         public void Update()
@@ -36,7 +38,8 @@ namespace Game.Character
         [Range(0, 1)] public float bufferTime = 0.5f;
         public TeamBuffer redTeamBuffer;
         public TeamBuffer blueTeamBuffer;
-
+        [SerializeField] private RectTransform redBufferViewImage;
+        [SerializeField] private RectTransform blueBufferViewImage;
         public static InputBuffer Instance;
 
         private void Awake()
@@ -44,7 +47,34 @@ namespace Game.Character
             Instance = this;
             redTeamBuffer = new TeamBuffer(TEAM.Red, bufferTime);
             blueTeamBuffer = new TeamBuffer(TEAM.Blue, bufferTime);
+            blueBufferViewImage.sizeDelta = new Vector2(15, 0);
+            redBufferViewImage.sizeDelta = new Vector2(15, 0);
+
         }
+        private void OnDisable()
+        {
+            redTeamBuffer.StartTime -= OnRedStart;
+            blueTeamBuffer.StartTime -= OnBlueStart;
+        }
+
+        private void OnEnable()
+        {
+            redTeamBuffer.StartTime += OnRedStart;
+            blueTeamBuffer.StartTime += OnBlueStart;
+        }
+
+        private void OnBlueStart()
+        {
+            blueBufferViewImage.sizeDelta = new Vector2(15, 130);
+            blueBufferViewImage.DOSizeDelta(new Vector2(15, 0), bufferTime).SetUpdate(true);
+        }
+
+        private void OnRedStart()
+        {
+            redBufferViewImage.sizeDelta = new Vector2(15, 130);
+            redBufferViewImage.DOSizeDelta(new Vector2(15, 0), bufferTime).SetUpdate(true);
+        }
+
 
 
         void Update()
