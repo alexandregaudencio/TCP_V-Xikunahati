@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] private StateHandler currentState;
         public static GameStateController instance;
 
+        public event Action<GameState> StateChange = delegate { };
 
         private void Awake()
         {
@@ -40,6 +41,7 @@ namespace Game
             currentState.StateEnd();
             currentState = GetHandler(state);
             currentState.StateStart();
+            StateChange?.Invoke(state);
         }
 
         private StateHandler GetHandler(GameState state)
@@ -74,7 +76,7 @@ namespace Game
 
         public void ReloadScene()
         {
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
