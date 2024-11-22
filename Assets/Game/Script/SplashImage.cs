@@ -10,8 +10,8 @@ public class SplashImage : MonoBehaviour
     {
         image = GetComponent<Image>();
         transform.localScale = Vector3.one * 0.7f;
-        transform.DOScale(1, 4).SetUpdate(true);
-        image.DOFade(0, 1).SetUpdate(true).SetDelay(3);
+        transform.DOScale(1, 3).SetUpdate(true);
+        image.DOFade(0, 1).SetUpdate(true).SetDelay(2);
 
     }
 

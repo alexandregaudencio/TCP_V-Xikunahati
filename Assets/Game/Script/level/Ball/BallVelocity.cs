@@ -6,12 +6,11 @@ namespace Game.Ball
     public class BallVelocity : MonoBehaviour
     {
         private BallController ballController;
-        [SerializeField] private float initialVelocity = 2;
-        [SerializeField, Range(0.01f, 0.1f)] private float speedTimeMultiplier = 0.1f;
+        [SerializeField] private float initialParabolicTime = 2.5f;
+        [SerializeField, Range(0.01f, 0.2f)] private float speedTimeMultiplier = 0.12f;
         private Rigidbody ballRigidbody;
-
-        public Vector2 VelocityRange = new Vector2(0.5f, 2);
-        [SerializeField] private float velocityForce;
+        [SerializeField, Min(0.1f)] private float minParabolicTime = 0.8f;
+        [SerializeField] private float currentParabolicTime;
         public event Action<Rigidbody> VelocityChange = delegate { };
 
         private void Awake()
@@ -33,11 +32,13 @@ namespace Game.Ball
 
         private void OnHeadedBall(ThrowBallData data)
         {
-            float parabolicTime = initialVelocity - ballController.headCount * speedTimeMultiplier;
+            float parabolicTime = initialParabolicTime - ballController.headCount * speedTimeMultiplier;
+
+            parabolicTime = Mathf.Clamp(parabolicTime, minParabolicTime, initialParabolicTime);
             //parabolicTime = Mathf.Clamp(parabolicTime, VelocityRange.x, VelocityRange.y);
 
             Vector3 velocity = ParabolicVelocity(transform.position, data.FinalPositionOffset, parabolicTime);
-            velocityForce = parabolicTime;
+            currentParabolicTime = parabolicTime;
             ballRigidbody.velocity = velocity;
             VelocityChange?.Invoke(ballRigidbody);
         }

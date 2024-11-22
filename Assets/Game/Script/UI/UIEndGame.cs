@@ -21,6 +21,7 @@ public class UIEndGame : MonoBehaviour
     [SerializeField] private Color red;
     [SerializeField] private Color blue;
     private RectTransform rectTransform;
+    [SerializeField] private TMP_Text f1Text;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class UIEndGame : MonoBehaviour
     {
         GameStateController.StateChange += OnStateChange;
         rectTransform.position += Vector3.up * 1200;
+        f1Text.DOFade(0, 0);
     }
 
     private void OnDestroy()
@@ -68,6 +70,8 @@ public class UIEndGame : MonoBehaviour
 
 
         });
+
+        f1Text.DOFade(1, 2).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine).SetUpdate(true).SetDelay(6);
 
 
     }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5177296ec4933084186ad6d8badd0b97, type: 3}
   m_Name: BlueTeamScore
   m_EditorClassIdentifier: 
+  teamScore: 0
