@@ -1,4 +1,5 @@
 using Game.Ball;
+using Game.CoreLoop;
 using UnityEngine;
 
 namespace Game.Character
@@ -15,20 +16,46 @@ namespace Game.Character
         private ThrowBallData throwBallData => ballController.throwBallData;
         private Vector2 horizontalPosition => new Vector2(transform.position.x, transform.position.z);
 
-        private Vector2 TargetDirection = Vector2.zero;
+        [SerializeField] private Vector2 TargetDirection = Vector2.zero;
+        CharacterControl characterControl;
         private void Awake()
         {
             ballController = FindAnyObjectByType<BallController>();
             teamSelection = GetComponent<TeamSelection>();
             characterBehaviour = GetComponent<CharacterBehaviour>();
+            characterControl = GetComponent<CharacterControl>();
+        }
 
+        private void Start()
+        {
+            CoreLoopController.Instance.StateChanged += OnCoreLoopChange;
+        }
+
+        private void OnDestroy()
+        {
+            CoreLoopController.Instance.StateChanged -= OnCoreLoopChange;
+
+        }
+
+        private void OnCoreLoopChange(CoreLoopState state)
+        {
+            if (state == CoreLoopState.SERVE)
+            {
+                TargetDirection = Vector2.zero;
+            }
+            if (state == CoreLoopState.ROLLING_BALL)
+                isServingBall = false;
         }
 
 
         private void Update()
         {
-            //GetComponent<PlayerStateMachine>().TransitionToState(GetComponent<PlayerStateMachine>().StateInstances.movingState);
+            characterControl.Animator.Anim.SetFloat(
+                Animator.StringToHash("horizontalVelocity"),
+                characterControl.Behaviour.CharacterRigidbody.velocity.magnitude
+                );
 
+            //GetComponent<PlayerStateMachine>().TransitionToState(GetComponent<PlayerStateMachine>().StateInstances.movingState);
             if (isServingBall)
             {
                 dive();

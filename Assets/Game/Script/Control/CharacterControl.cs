@@ -46,6 +46,7 @@ namespace Game.Character
         {
             initialForward = transform.forward;
         }
+
         private void LateUpdate()
         {
             //Update heighlighter

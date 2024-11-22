@@ -43,10 +43,10 @@ namespace Game.Camera
 
         private IEnumerator ShakeCoroutine(float intensity, float duration)
         {
-            float tweenDuration = duration / intensity;
+            //float tweenDuration = (float)duration / (float)intensity;
             multiChannelPerlin.m_AmplitudeGain = intensity;
-            yield return new WaitForSeconds(duration - tweenDuration);
-            DOTween.To(x => multiChannelPerlin.m_AmplitudeGain = x, intensity, 0f, tweenDuration);
+            yield return new WaitForSecondsRealtime(duration);
+            DOTween.To(x => multiChannelPerlin.m_AmplitudeGain = x, intensity, 0f, duration).SetUpdate(true);
         }
 
         private void ResetShake()

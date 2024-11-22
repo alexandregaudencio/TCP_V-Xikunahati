@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Game.CoreLoop;
 using System;
 using UnityEngine;
 
@@ -146,7 +147,15 @@ namespace Game.Ball
 
         private void LateUpdate()
         {
-            ApplyDistanceEffect();
+            if (CoreLoopController.Instance.CurrentState == CoreLoopState.ROLLING_BALL)
+            {
+                ApplyDistanceEffect();
+
+            }
+            else
+            {
+                SetOpacity(0);
+            }
             transform.forward = targetCameraTransform.forward;
             //Vector2 direction = targetCameraTransform.position - transform.position;
             //transform.LookAt(direction);

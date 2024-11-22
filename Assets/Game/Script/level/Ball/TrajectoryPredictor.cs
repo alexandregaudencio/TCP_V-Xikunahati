@@ -1,3 +1,4 @@
+using Game.CoreLoop;
 using System;
 using UnityEngine;
 
@@ -20,15 +21,42 @@ namespace Game.Ball
         float rayOverlap = 1.1f;
         #endregion
 
+        CoreLoopController coreLoopController;
         private void Awake()
         {
             lineRenderer = GetComponent<LineRenderer>();
+            coreLoopController = FindObjectOfType<CoreLoopController>();
 
+        }
+
+        private void OnCoreLoopChange(CoreLoopState state)
+        {
+            Debug.Log("CHANGE: " + state);
+            if (state == CoreLoopState.ROLLING_BALL)
+            {
+                SetTrajectoryVisible(true);
+
+            }
+            else
+            {
+                SetTrajectoryVisible(false);
+
+
+            }
         }
 
         private void Start()
         {
             SetTrajectoryVisible(false);
+
+            coreLoopController.StateChanged += OnCoreLoopChange;
+
+        }
+
+        private void OnDestroy()
+        {
+            coreLoopController.StateChanged -= OnCoreLoopChange;
+
         }
 
         public void PredictTrajectory(Rigidbody rigidbody)

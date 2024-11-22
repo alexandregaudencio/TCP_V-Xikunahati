@@ -70,9 +70,6 @@ namespace Game
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F1)) ReloadScene();
-            if (Input.GetKeyDown(KeyCode.Alpha1)) TransitionToState(GameState.STARTUP);
-            if (Input.GetKeyDown(KeyCode.Alpha2)) TransitionToState(GameState.GAMEPLAY);
-            if (Input.GetKeyDown(KeyCode.Alpha3)) TransitionToState(GameState.ENDGAME);
         }
 
         public void ReloadScene()

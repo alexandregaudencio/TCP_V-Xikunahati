@@ -41,23 +41,7 @@ namespace Game.Character
         }
 
 
-        private void OnGUI()
-        {
-            string inputEnableLabel = (inputEnabled) ? "Disable input" : "Enable input";
-            if (GUI.Button(new Rect(25, 25, 100, 30), inputEnableLabel))
-            {
-                inputEnabled = !inputEnabled;
-                if (inputEnabled)
-                {
-                    EnableAll(TEAM.Red);
-                    EnableAll(TEAM.Blue);
-                }
-                else
-                {
-                    DisableAll();
-                }
-            }
-        }
+
 
         public void DisableAll()
         {

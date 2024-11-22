@@ -42,6 +42,8 @@ namespace Game.Character
         [SerializeField] private RectTransform blueBufferViewImage;
         public static InputBuffer Instance;
 
+        private Tween blueSizeDeltaTween;
+        private Tween redSizeDeltaTween;
         private void Awake()
         {
             Instance = this;
@@ -63,17 +65,21 @@ namespace Game.Character
             blueTeamBuffer.StartTime += OnBlueStart;
         }
 
+
         private void OnBlueStart()
         {
             blueBufferViewImage.sizeDelta = new Vector2(15, 130);
-            blueBufferViewImage.DOSizeDelta(new Vector2(15, 0), bufferTime).SetUpdate(true);
+            blueSizeDeltaTween.Kill();
+            blueSizeDeltaTween = blueBufferViewImage.DOSizeDelta(new Vector2(15, 0), bufferTime).SetUpdate(true);
         }
 
         private void OnRedStart()
         {
             redBufferViewImage.sizeDelta = new Vector2(15, 130);
-            redBufferViewImage.DOSizeDelta(new Vector2(15, 0), bufferTime).SetUpdate(true);
+            redSizeDeltaTween.Kill();
+            redSizeDeltaTween = redBufferViewImage.DOSizeDelta(new Vector2(15, 0), bufferTime).SetUpdate(true);
         }
+
 
 
 

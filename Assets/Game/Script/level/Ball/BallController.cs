@@ -81,12 +81,11 @@ namespace Game.Ball
         private void OnCollisionEnter(Collision collision)
         {
 
-
+            if (CoreLoopController.Instance.CurrentState != CoreLoopState.ROLLING_BALL) return;
             if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
             {
                 TeamSelection contactBodyTeam = collision.gameObject.GetComponent<TeamSelection>();
                 Debug.Log("contact: " + contactBodyTeam.team);
-                if (CoreLoopController.Instance.CurrentState != CoreLoopState.ROLLING_BALL) return;
                 ballContactBodyTeam?.Invoke(contactBodyTeam.team);
 
                 //collision.gameObject.GetComponent<BodyEffect>()?.DoBallContactEffect();
@@ -131,7 +130,7 @@ namespace Game.Ball
 
         private void OnTriggerStay(Collider other)
         {
-            if (CoreLoopController.Instance.CurrentState == CoreLoopState.SERVE) return;
+            if (CoreLoopController.Instance.CurrentState != CoreLoopState.ROLLING_BALL) return;
 
             if (!other.CompareTag("Head")) return;
             if (hasHittedBall) return;

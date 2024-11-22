@@ -32,9 +32,10 @@ namespace Game.Ball
 
         public void SetServePosition()
         {
+            ballTrail.enabled = false;
             Transform serveTransform = serverPositions.GetServePosition(TeamTurnHandler.Instance.TeamTurn);
             transform.position = serveTransform.position - serveTransform.forward * ServeOffset.x + Vector3.up * ServeOffset.y;
-
+            ballTrail.enabled = true;
         }
 
     }
